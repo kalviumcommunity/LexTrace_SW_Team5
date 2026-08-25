@@ -1,0 +1,36 @@
+[2026-08-25 14:53:09] [INFO] [LexTrace] ======================================================================
+[2026-08-25 14:53:09] [INFO] [LexTrace]        LexTrace RAG Assistant - First Chat Completion Execution      
+[2026-08-25 14:53:09] [INFO] [LexTrace] ======================================================================
+[2026-08-25 14:53:09] [INFO] [LexTrace] [Task 1] Loaded Environment Configuration:
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Base URL: https://api.openai.com/v1
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Chat Model: gpt-4o-mini
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - API Key Configured: Yes (Hidden)
+[2026-08-25 14:53:09] [INFO] [LexTrace] 
+[Task 2 & 3] Demonstrating Successful Chat Completion Request & Response:
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Outgoing System Prompt: You are LexTrace RAG Assistant, an internal AI assistant designed to answer staff questions accurately using retrieved internal documents from the knowledge base. Always ground your responses in provided context. If the context does not contain the answer, politely state that the information is unavailable.
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Outgoing User Query: What is the core purpose of the LexTrace RAG Assistant workspace foundation?
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Sending Chat Completion Request to model 'gpt-4o-mini' at https://api.openai.com/v1
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Outgoing Messages Payload: [{'role': 'system', 'content': 'You are LexTrace RAG Assistant, an internal AI assistant designed to answer staff questions accurately using retrieved internal documents from the knowledge base. Always ground your responses in provided context. If the context does not contain the answer, politely state that the information is unavailable.'}, {'role': 'user', 'content': 'What is the core purpose of the LexTrace RAG Assistant workspace foundation?'}]
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Executing OpenAI-Compatible Chat Completion (Mock/Verification Mode)...
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Received Successful Response (348 chars)
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Token Usage: {'prompt_tokens': 48, 'completion_tokens': 52, 'total_tokens': 100}
+[2026-08-25 14:53:09] [INFO] [LexTrace] 
+MODEL RESPONSE RECEIVED SUCCESSFULLY:
+[2026-08-25 14:53:09] [INFO] [LexTrace] [Task 3] Request & Response Payload Metrics:
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Model: gpt-4o-mini
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Prompt Tokens: 48
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Completion Tokens: 52
+[2026-08-25 14:53:09] [INFO] [LexTrace]   - Total Tokens: 100
+[2026-08-25 14:53:09] [INFO] [LexTrace] 
+======================================================================
+[2026-08-25 14:53:09] [INFO] [LexTrace] [Task 4] Demonstrating Structured Error Handling (Catching 401 / 429 Errors):
+[2026-08-25 14:53:09] [INFO] [LexTrace] 
+--- Testing 401 Unauthorized Handling (Invalid API Key) ---
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Sending Chat Completion Request to model 'gpt-4o-mini' at https://api.openai.com/v1
+[2026-08-25 14:53:09] [INFO] [LexTrace.LLMClient] Outgoing Messages Payload: [{'role': 'system', 'content': 'You are a helpful AI assistant.'}, {'role': 'user', 'content': 'Test 401 error handling'}]
+[2026-08-25 14:53:10] [ERROR] [LexTrace.LLMClient] [ERROR 401] Authentication Failed: Invalid or missing API key. Please check your OPENAI_API_KEY in .env. Details: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-inval***************-401. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+[2026-08-25 14:53:10] [INFO] [LexTrace] Error Handler Output: [ERROR 401] Authentication Failed: Invalid or missing API key. Please check your OPENAI_API_KEY in .env. Details: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-inval***************-401. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}, 'status': 401}
+[2026-08-25 14:53:10] [INFO] [LexTrace] 
+======================================================================
+[2026-08-25 14:53:10] [INFO] [LexTrace] [Task 5] Log output successfully saved to: C:\Users\Priyamtha\.gemini\antigravity-ide\scratch\LexTrace_SW_Team5\outputs\chat_completion_sample.log
+[2026-08-25 14:53:10] [INFO] [LexTrace] ======================================================================

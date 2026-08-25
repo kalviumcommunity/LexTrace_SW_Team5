@@ -1,0 +1,44 @@
+# Python virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Environment files and secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python bytecode & cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Node / frontend exclusions
+node_modules/
+dist/
+build/
+.next/
+
+# Local data & database exclusions (keep placeholder files)
+data/*
+!data/.gitkeep
+!data/sample_documents.json
+
+# Output logs and generated responses (keep placeholder files)
+outputs/*
+!outputs/.gitkeep
+
+# Vector DB storage
+chroma_db/
+*.db
+*.sqlite3
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp

@@ -33,13 +33,17 @@ def main():
     print(f"  - Embedding Model: {Config.EMBEDDING_MODEL}")
     print(f"  - API Key set: {'Yes (Hidden)' if Config.OPENAI_API_KEY else 'No'}")
 
-    # 3. Verify sample document loading
-    print("\n[3/4] Testing Sample Document Ingestion:")
+    # 3. Verify sample document loading & schema validation
+    print("\n[3/4] Testing Sample Document Ingestion & Validation:")
     sample_file = Config.DATA_DIR / "sample_documents.json"
     if sample_file.exists():
         with open(sample_file, "r", encoding="utf-8") as f:
             docs = json.load(f)
         print(f"  - Successfully loaded {len(docs)} sample document(s).")
+        
+        from src.data_validation import validate_dataset
+        val_result = validate_dataset(sample_file)
+        print(f"  - Data Validation Status: [{'OK' if val_result['valid'] else 'FAILED'}] ({val_result.get('total_records', 0)} valid records)")
     else:
         print("  - Sample document file not found.")
 

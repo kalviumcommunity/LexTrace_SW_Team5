@@ -26,6 +26,7 @@ build/
 data/*
 !data/.gitkeep
 !data/sample_documents.json
+!data/transaction_schema.json
 
 # Output logs and generated responses (keep placeholder files)
 outputs/*

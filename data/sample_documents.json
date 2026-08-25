@@ -1,0 +1,12 @@
+[
+  {
+    "id": "doc_001",
+    "title": "Company IT Security Policy",
+    "content": "All employees must use multi-factor authentication (MFA) for accessing internal systems and VPN."
+  },
+  {
+    "id": "doc_002",
+    "title": "Remote Work Guidelines",
+    "content": "Core working hours for remote staff are 10:00 AM to 4:00 PM EST. Equipment requests should be submitted to IT Helpdesk."
+  }
+]

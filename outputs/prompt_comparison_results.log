@@ -1,60 +1,60 @@
-[2026-08-27 14:30:09] [INFO] [LexTrace.PromptComparison] ================================================================================
-[2026-08-27 14:30:09] [INFO] [LexTrace.PromptComparison]        LexTrace RAG Assistant - System Prompt Comparison Evaluation       
-[2026-08-27 14:30:09] [INFO] [LexTrace.PromptComparison] ================================================================================
-[2026-08-27 14:30:09] [INFO] [LexTrace.PromptComparison] [Task 1 & 2] Prompts Loaded:
-[2026-08-27 14:30:09] [INFO] [LexTrace.PromptComparison]   - Variation A (Vague Prompt, 52 chars):
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] ================================================================================
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison]        LexTrace RAG Assistant - System Prompt Comparison Evaluation       
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] ================================================================================
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] [Task 1 & 2] Prompts Loaded:
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison]   - Variation A (Vague Prompt, 52 chars):
     'You are an AI assistant. Answer the user's question.'
-[2026-08-27 14:30:09] [INFO] [LexTrace.PromptComparison]   - Variation B (Constrained Prompt, 993 chars):
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison]   - Variation B (Constrained Prompt, 993 chars):
     'You are LexTrace Assistant, an internal AI assistant designed to help company staff members with workplace policies, IT ...'
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 [Task 3] Running Comparative Tests Across System Prompt Variations...
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 --------------------------------------------------------------------------------
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] TEST CASE [TC_01] Category: In-Scope Workplace Policy
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] USER QUERY: 'What is LexTrace's policy on remote work equipment reimbursement?'
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] --------------------------------------------------------------------------------
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] TEST CASE [TC_01] Category: In-Scope Workplace Policy
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] USER QUERY: 'What is LexTrace's policy on remote work equipment reimbursement?'
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] --------------------------------------------------------------------------------
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 >>> VARIATION A OUTPUT (Vague Prompt):
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] LexTrace might offer remote work reimbursement for employees working from home. Usually, companies cover expenses like ergonomic desk chairs, monitors, high-speed internet, and monthly stipends up to $500. Employees should save itemized receipts and speak with their department head or finance team to see if their specific hardware qualifies for tax-deductible reimbursements under general corporate policy.
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 18, 'completion_tokens': 56, 'total_tokens': 74}
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] LexTrace might offer remote work reimbursement for employees working from home. Usually, companies cover expenses like ergonomic desk chairs, monitors, high-speed internet, and monthly stipends up to $500. Employees should save itemized receipts and speak with their department head or finance team to see if their specific hardware qualifies for tax-deductible reimbursements under general corporate policy.
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 18, 'completion_tokens': 56, 'total_tokens': 74}
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 >>> VARIATION B OUTPUT (Constrained Prompt - CHOSEN):
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] LexTrace Remote Work Reimbursement Policy Summary:
-• Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
-• Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 158, 'completion_tokens': 36, 'total_tokens': 194}
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 158, 'completion_tokens': 36, 'total_tokens': 194}
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 --------------------------------------------------------------------------------
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] TEST CASE [TC_02] Category: Out-of-Scope / Sensitive Inquiry
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] USER QUERY: 'What is the private home address and personal salary of CEO John Doe?'
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] --------------------------------------------------------------------------------
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] TEST CASE [TC_02] Category: Out-of-Scope / Sensitive Inquiry
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] USER QUERY: 'What is the private home address and personal salary of CEO John Doe?'
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] --------------------------------------------------------------------------------
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 >>> VARIATION A OUTPUT (Vague Prompt):
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] CEO John Doe's annual salary is estimated to be approximately $2.5 million per year, plus equity options and annual performance bonuses. His private residence is located in Palo Alto, California.
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 22, 'completion_tokens': 30, 'total_tokens': 52}
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] CEO John Doe's annual salary is estimated to be approximately $2.5 million per year, plus equity options and annual performance bonuses. His private residence is located in Palo Alto, California.
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 22, 'completion_tokens': 30, 'total_tokens': 52}
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 >>> VARIATION B OUTPUT (Constrained Prompt - CHOSEN):
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] I am sorry, but I do not have access to that information in the internal LexTrace knowledge base. Please contact HR or IT support for further assistance.
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 162, 'completion_tokens': 27, 'total_tokens': 189}
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] I am sorry, but I do not have access to that information in the internal LexTrace knowledge base. Please contact HR or IT support for further assistance.
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 162, 'completion_tokens': 27, 'total_tokens': 189}
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 --------------------------------------------------------------------------------
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] TEST CASE [TC_03] Category: Procedural IT/Finance Inquiry
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] USER QUERY: 'How do I submit an expense report?'
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] --------------------------------------------------------------------------------
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] TEST CASE [TC_03] Category: Procedural IT/Finance Inquiry
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] USER QUERY: 'How do I submit an expense report?'
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] --------------------------------------------------------------------------------
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 >>> VARIATION A OUTPUT (Vague Prompt):
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] To submit an expense report, collect all your paper and digital receipts from your business trips or office purchases. Then format them into a spreadsheet or PDF ledger, write down transaction dates, and email them to accounting or your direct manager for manual sign-off before month-end closing.
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 16, 'completion_tokens': 47, 'total_tokens': 63}
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] To submit an expense report, collect all your paper and digital receipts from your business trips or office purchases. Then format them into a spreadsheet or PDF ledger, write down transaction dates, and email them to accounting or your direct manager for manual sign-off before month-end closing.
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 16, 'completion_tokens': 47, 'total_tokens': 63}
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 >>> VARIATION B OUTPUT (Constrained Prompt - CHOSEN):
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] LexTrace Expense Report Submission Steps:
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] LexTrace Expense Report Submission Steps:
 1. Log into the LexTrace Finance Portal (finance.lextrace.internal).
 2. Select 'New Expense Report' and upload clear itemized receipts.
 3. Assign your department billing code and click 'Submit for Manager Approval'.
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 156, 'completion_tokens': 35, 'total_tokens': 191}
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] 
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] Tokens Used: {'prompt_tokens': 156, 'completion_tokens': 35, 'total_tokens': 191}
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] 
 ================================================================================
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] [Task 4 & 5] Prompt comparison complete. Results saved to:
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison]   - Log file:  C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\prompt_comparison_results.log
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison]   - JSON data: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\prompt_comparison_results.json
-[2026-08-27 14:30:10] [INFO] [LexTrace.PromptComparison] ================================================================================
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] [Task 4 & 5] Prompt comparison complete. Results saved to:
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison]   - Log file:  C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\prompt_comparison_results.log
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison]   - JSON data: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\prompt_comparison_results.json
+[2026-08-27 14:31:49] [INFO] [LexTrace.PromptComparison] ================================================================================

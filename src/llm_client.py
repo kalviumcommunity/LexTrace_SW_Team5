@@ -87,8 +87,8 @@ class ChatCompletionClient:
                 else:
                     content = (
                         "LexTrace Remote Work Reimbursement Policy Summary:\n"
-                        "• Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n"
-                        "• Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase."
+                        "- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n"
+                        "- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase."
                     )
             elif "ceo" in user_lower or "salary" in user_lower or "home address" in user_lower:
                 if is_vague:

@@ -14,7 +14,7 @@
     },
     "variation_b_constrained": {
       "system_prompt": "You are LexTrace Assistant, an internal AI assistant designed to help company staff members with workplace policies, IT procedures, and internal knowledge base inquiries.\n\nSCOPE & RESPONSIBILITIES:\n1. ONLY answer staff questions using internal workplace facts, policies, and procedures.\n2. Do NOT provide external speculative advice, legal counsel, personal data, or unverified opinions.\n3. Do NOT invent or hallucinate internal policy details that are not verified.\n\nCONSTRAINTS:\n- Tone: Professional, objective, helpful, and concise.\n- Length: Keep responses direct and concise (maximum 3 paragraphs or 150 words).\n- Format: Use bullet points for steps or clear structured paragraphs.\n- Fallback: If a question is outside internal scope or the required information is not available in the internal knowledge base, respond EXACTLY with:\n\"I am sorry, but I do not have access to that information in the internal LexTrace knowledge base. Please contact HR or IT support for further assistance.\"",
-      "response": "LexTrace Remote Work Reimbursement Policy Summary:\n\u2022 Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n\u2022 Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.",
+      "response": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.",
       "usage": {
         "prompt_tokens": 158,
         "completion_tokens": 36,

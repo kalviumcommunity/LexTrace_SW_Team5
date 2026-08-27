@@ -1,0 +1,78 @@
+{
+  "max_token_budget": 250,
+  "system_prompt": "You are LexTrace Assistant, an internal RAG AI assistant. Answer staff questions concisely using provided workplace context. If information is unavailable, respond politely with standard fallback.",
+  "turns_summary": [
+    {
+      "turn": 1,
+      "query": "What is LexTrace's policy on remote work equipment reimbursement?",
+      "naive_tokens": 78,
+      "naive_overflow": false,
+      "managed_pre_trim_tokens": 78,
+      "managed_post_trim_tokens": 78,
+      "tokens_saved": 0,
+      "actions_taken": [],
+      "managed_messages_count": 3
+    },
+    {
+      "turn": 2,
+      "query": "How do I submit an expense claim for a monitor I bought yesterday?",
+      "naive_tokens": 133,
+      "naive_overflow": false,
+      "managed_pre_trim_tokens": 135,
+      "managed_post_trim_tokens": 135,
+      "tokens_saved": 0,
+      "actions_taken": [],
+      "managed_messages_count": 5
+    },
+    {
+      "turn": 3,
+      "query": "What are the core business operational hours for remote engineering staff?",
+      "naive_tokens": 192,
+      "naive_overflow": false,
+      "managed_pre_trim_tokens": 196,
+      "managed_post_trim_tokens": 196,
+      "tokens_saved": 0,
+      "actions_taken": [],
+      "managed_messages_count": 7
+    },
+    {
+      "turn": 4,
+      "query": "Can I use my personal laptop for internal code development while traveling?",
+      "naive_tokens": 245,
+      "naive_overflow": false,
+      "managed_pre_trim_tokens": 251,
+      "managed_post_trim_tokens": 197,
+      "tokens_saved": 54,
+      "actions_taken": [
+        "Trimmed Oldest User Turn: 'Context Document 101: Remote work stipend covers u...' & Assistant Response: 'LexTrace Assistant Answer (Turn 1): Acti...'"
+      ],
+      "managed_messages_count": 7
+    },
+    {
+      "turn": 5,
+      "query": "What is the deadline for submitting claims to qualify for mid-month payroll?",
+      "naive_tokens": 302,
+      "naive_overflow": true,
+      "managed_pre_trim_tokens": 256,
+      "managed_post_trim_tokens": 199,
+      "tokens_saved": 57,
+      "actions_taken": [
+        "Trimmed Oldest User Turn: 'Context Document 102: Expense reports must be subm...' & Assistant Response: 'LexTrace Assistant Answer (Turn 2): Acti...'"
+      ],
+      "managed_messages_count": 7
+    },
+    {
+      "turn": 6,
+      "query": "Summarize the required authentication steps for accessing internal databases remotely.",
+      "naive_tokens": 359,
+      "naive_overflow": true,
+      "managed_pre_trim_tokens": 258,
+      "managed_post_trim_tokens": 197,
+      "tokens_saved": 61,
+      "actions_taken": [
+        "Trimmed Oldest User Turn: 'Context Document 103: Core working hours for all r...' & Assistant Response: 'LexTrace Assistant Answer (Turn 3): Acti...'"
+      ],
+      "managed_messages_count": 7
+    }
+  ]
+}

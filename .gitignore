@@ -34,6 +34,8 @@ outputs/*
 !outputs/chat_completion_sample.log
 !outputs/prompt_comparison_results.log
 !outputs/prompt_comparison_results.json
+!outputs/token_analysis_results.log
+!outputs/token_analysis_results.json
 
 # Vector DB storage
 chroma_db/

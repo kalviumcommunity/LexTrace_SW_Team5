@@ -1,0 +1,127 @@
+{
+  "model": "gpt-4o-mini",
+  "samples_analysis": [
+    {
+      "sample_name": "Sample 1: Short Staff Question",
+      "category": "Short Input Query",
+      "char_count": 65,
+      "word_count": 9,
+      "token_count": 12,
+      "chars_per_token": 5.42,
+      "words_per_token": 0.75,
+      "tokens_per_word": 1.33,
+      "preview": "What is LexTrace's policy on remote work equipment reimbursement?"
+    },
+    {
+      "sample_name": "Sample 2: Policy Paragraph Context",
+      "category": "Medium RAG Document Chunk",
+      "char_count": 361,
+      "word_count": 56,
+      "token_count": 73,
+      "chars_per_token": 4.95,
+      "words_per_token": 0.77,
+      "tokens_per_word": 1.3,
+      "preview": "Core working hours for remote staff are 10:00 AM to 4:00 PM EST. Equipment reque..."
+    },
+    {
+      "sample_name": "Sample 3: Full IT Security & Remote Work Policy",
+      "category": "Full Corpus Document",
+      "char_count": 1537,
+      "word_count": 211,
+      "token_count": 291,
+      "chars_per_token": 5.28,
+      "words_per_token": 0.73,
+      "tokens_per_word": 1.38,
+      "preview": "# LexTrace Corporate IT Security & Remote Workplace Policy\n\n## 1. Information Se..."
+    },
+    {
+      "sample_name": "Sample 4: Technical Code Snippet & JSON Schema",
+      "category": "Code / Data Structure",
+      "char_count": 366,
+      "word_count": 30,
+      "token_count": 85,
+      "chars_per_token": 4.31,
+      "words_per_token": 0.35,
+      "tokens_per_word": 2.83,
+      "preview": "def authenticate_user(req: Request) -> Dict[str, Any]:\n    auth_header = req.hea..."
+    },
+    {
+      "sample_name": "Sample 5: Special Terms & Long Words",
+      "category": "Long Words / Non-Standard Syntax",
+      "char_count": 190,
+      "word_count": 13,
+      "token_count": 46,
+      "chars_per_token": 4.13,
+      "words_per_token": 0.28,
+      "tokens_per_word": 3.54,
+      "preview": "Supercalifragilisticexpialidocious unconstitutionality electroencephalographical..."
+    }
+  ],
+  "cost_estimates": {
+    "single_standard_rag_query": {
+      "model": "gpt-4o-mini",
+      "display_name": "GPT-4o-Mini (Default Lightweight Model)",
+      "input_tokens": 185,
+      "output_tokens": 40,
+      "total_tokens": 225,
+      "input_rate_per_1m": 0.15,
+      "output_rate_per_1m": 0.6,
+      "input_cost_usd": 2.8e-05,
+      "output_cost_usd": 2.4e-05,
+      "total_cost_usd": 5.2e-05,
+      "formatted_total_cost": "$0.000052"
+    },
+    "1k_standard_queries": {
+      "model": "gpt-4o-mini",
+      "display_name": "GPT-4o-Mini (Default Lightweight Model)",
+      "input_tokens": 185000,
+      "output_tokens": 40000,
+      "total_tokens": 225000,
+      "input_rate_per_1m": 0.15,
+      "output_rate_per_1m": 0.6,
+      "input_cost_usd": 0.02775,
+      "output_cost_usd": 0.024,
+      "total_cost_usd": 0.05175,
+      "formatted_total_cost": "$0.051750"
+    },
+    "10k_standard_queries": {
+      "model": "gpt-4o-mini",
+      "display_name": "GPT-4o-Mini (Default Lightweight Model)",
+      "input_tokens": 1850000,
+      "output_tokens": 400000,
+      "total_tokens": 2250000,
+      "input_rate_per_1m": 0.15,
+      "output_rate_per_1m": 0.6,
+      "input_cost_usd": 0.2775,
+      "output_cost_usd": 0.24,
+      "total_cost_usd": 0.5175,
+      "formatted_total_cost": "$0.517500"
+    },
+    "1k_high_context_queries": {
+      "model": "gpt-4o-mini",
+      "display_name": "GPT-4o-Mini (Default Lightweight Model)",
+      "input_tokens": 453000,
+      "output_tokens": 100000,
+      "total_tokens": 553000,
+      "input_rate_per_1m": 0.15,
+      "output_rate_per_1m": 0.6,
+      "input_cost_usd": 0.06795,
+      "output_cost_usd": 0.06,
+      "total_cost_usd": 0.12795,
+      "formatted_total_cost": "$0.127950"
+    },
+    "single_query_gpt4o": {
+      "model": "gpt-4o",
+      "display_name": "GPT-4o (High-Reasoning Production Model)",
+      "input_tokens": 185,
+      "output_tokens": 40,
+      "total_tokens": 225,
+      "input_rate_per_1m": 2.5,
+      "output_rate_per_1m": 10.0,
+      "input_cost_usd": 0.000463,
+      "output_cost_usd": 0.0004,
+      "total_cost_usd": 0.000862,
+      "formatted_total_cost": "$0.000862"
+    }
+  }
+}

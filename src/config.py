@@ -1,11 +1,13 @@
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
-# Load environment variables from .env file
 BASE_DIR = Path(__file__).resolve().parent.parent
 env_path = BASE_DIR / ".env"
-load_dotenv(dotenv_path=env_path)
+try:
+    from dotenv import load_dotenv
+    load_dotenv(dotenv_path=env_path)
+except ImportError:
+    pass
 
 class Config:
     BASE_DIR: Path = BASE_DIR

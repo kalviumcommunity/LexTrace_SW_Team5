@@ -32,6 +32,8 @@ data/*
 outputs/*
 !outputs/.gitkeep
 !outputs/chat_completion_sample.log
+!outputs/prompt_comparison_results.log
+!outputs/prompt_comparison_results.json
 
 # Vector DB storage
 chroma_db/

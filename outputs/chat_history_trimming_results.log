@@ -1,0 +1,49 @@
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] ================================================================================
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]    LexTrace RAG Assistant - Context Window & Multi-Turn History Management   
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] ================================================================================
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] [Task 1 & 2] Context Window Setup: Target Budget = 250 tokens.
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] System Prompt Preserved (Index 0): 'You are LexTrace Assistant, an internal RAG AI assistant. Answer staff questions...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+[Task 4] Simulating Multi-Turn Conversation Overflow & Trimming Strategy:
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] ------------------------------------------------------------------------------------------
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+TURN 1: User Question: 'What is LexTrace's policy on remote work equipment reim...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Naive Unmanaged History]:  Tokens = 78   | Budget Cap = 250 | Status = OK
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Pre-Trim)]: Tokens = 78   | Pre-Budget Check
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Post-Trim)]: Tokens = 78   | Budget Cap = 250 | Status = SUCCESS (Within Budget)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+TURN 2: User Question: 'How do I submit an expense claim for a monitor I bought...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Naive Unmanaged History]:  Tokens = 133  | Budget Cap = 250 | Status = OK
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Pre-Trim)]: Tokens = 135  | Pre-Budget Check
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Post-Trim)]: Tokens = 135  | Budget Cap = 250 | Status = SUCCESS (Within Budget)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+TURN 3: User Question: 'What are the core business operational hours for remote...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Naive Unmanaged History]:  Tokens = 192  | Budget Cap = 250 | Status = OK
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Pre-Trim)]: Tokens = 196  | Pre-Budget Check
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Post-Trim)]: Tokens = 196  | Budget Cap = 250 | Status = SUCCESS (Within Budget)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+TURN 4: User Question: 'Can I use my personal laptop for internal code developm...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Naive Unmanaged History]:  Tokens = 245  | Budget Cap = 250 | Status = OK
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Pre-Trim)]: Tokens = 251  | Pre-Budget Check
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]     -> [STRATEGY TRIGGERED]: Trimmed Oldest User Turn: 'Context Document 101: Remote work stipend covers u...' & Assistant Response: 'LexTrace Assistant Answer (Turn 1): Acti...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Post-Trim)]: Tokens = 197  | Budget Cap = 250 | Status = SUCCESS (Active Trimming: Saved 54 tokens)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+TURN 5: User Question: 'What is the deadline for submitting claims to qualify f...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Naive Unmanaged History]:  Tokens = 302  | Budget Cap = 250 | Status = FAIL (Overflow / Exceeds Budget)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Pre-Trim)]: Tokens = 256  | Pre-Budget Check
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]     -> [STRATEGY TRIGGERED]: Trimmed Oldest User Turn: 'Context Document 102: Expense reports must be subm...' & Assistant Response: 'LexTrace Assistant Answer (Turn 2): Acti...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Post-Trim)]: Tokens = 199  | Budget Cap = 250 | Status = SUCCESS (Active Trimming: Saved 57 tokens)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+TURN 6: User Question: 'Summarize the required authentication steps for accessi...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Naive Unmanaged History]:  Tokens = 359  | Budget Cap = 250 | Status = FAIL (Overflow / Exceeds Budget)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Pre-Trim)]: Tokens = 258  | Pre-Budget Check
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]     -> [STRATEGY TRIGGERED]: Trimmed Oldest User Turn: 'Context Document 103: Core working hours for all r...' & Assistant Response: 'LexTrace Assistant Answer (Turn 3): Acti...'
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   [Managed History (Post-Trim)]: Tokens = 197  | Budget Cap = 250 | Status = SUCCESS (Active Trimming: Saved 61 tokens)
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] ------------------------------------------------------------------------------------------
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] 
+================================================================================
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] [Task 5] Context window history management complete. Outputs saved:
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   - Log File: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\chat_history_trimming_results.log
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   - JSON Data: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\chat_history_trimming_results.json
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager]   - Markdown Report: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\docs\context_window_management_report.md
+[2026-08-27 14:43:13] [INFO] [LexTrace.ContextWindowManager] ================================================================================

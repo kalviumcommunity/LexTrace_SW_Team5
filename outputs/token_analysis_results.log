@@ -1,0 +1,34 @@
+[2026-08-27 14:36:42] [INFO] [LexTrace.TokenCounter] ================================================================================
+[2026-08-27 14:36:42] [INFO] [LexTrace.TokenCounter]        LexTrace RAG Assistant - Token Counter & Cost Estimation Analysis       
+[2026-08-27 14:36:42] [INFO] [LexTrace.TokenCounter] ================================================================================
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] [Task 1] Tokenizer Initialized: Model='gpt-4o-mini', Encoding='o200k_base'
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] 
+[Task 2 & 4] Token Counts and Character/Word-to-Token Ratios across Text Types:
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] ------------------------------------------------------------------------------------------
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] Sample Name                                | Chars  | Words  | Tokens | Tokens/Word | Chars/Token
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] ------------------------------------------------------------------------------------------
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] Sample 1: Short Staff Question             | 65     | 9      | 12     | 1.33        | 5.42       
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] Sample 2: Policy Paragraph Context         | 361    | 56     | 73     | 1.3         | 4.95       
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] Sample 3: Full IT Security & Remote Work P | 1537   | 211    | 291    | 1.38        | 5.28       
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] Sample 4: Technical Code Snippet & JSON Sc | 366    | 30     | 85     | 2.83        | 4.31       
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] Sample 5: Special Terms & Long Words       | 190    | 13     | 46     | 3.54        | 4.13       
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] ------------------------------------------------------------------------------------------
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] 
+[Task 3] Cost Estimation Analysis (Input vs Output Token Billing):
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]   Single Standard RAG Query (185 input tokens, 40 output tokens):
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - Input Token Cost  (@ $0.15/1M):  $0.000028
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - Output Token Cost (@ $0.6/1M): $0.000024
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - Total Query Cost:                                     $0.000052
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] 
+  Scale Projections for RAG Assistant Operations:
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - 1,000 Standard Queries (gpt-4o-mini):    $0.0517
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - 10,000 Standard Queries (gpt-4o-mini):   $0.5175
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - 1,000 High-Context Queries (Full Doc):  $0.1280
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]     - 1,000 Queries on GPT-4o (Production):    $0.8620
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] 
+================================================================================
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] [Task 5] Token analysis & cost estimation complete. Outputs saved:
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]   - Log File: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\token_analysis_results.log
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]   - JSON Data: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\token_analysis_results.json
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter]   - Markdown Report: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\docs\token_counting_report.md
+[2026-08-27 14:36:43] [INFO] [LexTrace.TokenCounter] ================================================================================

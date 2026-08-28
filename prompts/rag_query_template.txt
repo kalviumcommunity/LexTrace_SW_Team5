@@ -1,7 +1,10 @@
-Context:
+Retrieved Document Context:
+---
 {context}
+---
 
-Question:
+Staff User Question:
 {question}
 
-Answer using only the context above:
+Formatting Instructions:
+{format_instructions}

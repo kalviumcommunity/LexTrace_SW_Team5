@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.config import Config
 from src.llm_client import ChatCompletionClient
+from src.prompt_manager import PromptManager
 
 def setup_logging(log_file: Path) -> logging.Logger:
     """Configures dual logging to console and sample log file."""
@@ -41,7 +42,7 @@ def run_chat_completion_demo():
     logger = setup_logging(output_log_file)
 
     logger.info("=" * 70)
-    logger.info("       LexTrace RAG Assistant - First Chat Completion Execution      ")
+    logger.info("       LexTrace RAG Assistant - Interactive Chat Completion Feature      ")
     logger.info("=" * 70)
 
     # Task 1 - Read config from environment (.env)
@@ -50,23 +51,36 @@ def run_chat_completion_demo():
     logger.info(f"  - Chat Model: {Config.CHAT_MODEL}")
     logger.info(f"  - API Key Configured: {'Yes (Hidden)' if Config.OPENAI_API_KEY else 'No'}")
 
-    # System & User Messages Setup
-    system_prompt = "You are LexTrace RAG Assistant, an internal AI assistant designed to answer staff questions accurately using retrieved internal documents from the knowledge base."
-    prompt_path = Config.PROMPTS_DIR / "system_prompt.txt"
-    if prompt_path.exists():
-        with open(prompt_path, "r", encoding="utf-8") as f:
-            system_prompt = f.read().strip()
+    # Feature 1 - Render System & RAG Query Prompts via PromptManager
+    pm = PromptManager()
+    system_prompt = pm.render_prompt(
+        "system_prompt",
+        role="LexTrace Internal RAG Assistant",
+        domain="Legal & Corporate Workplace Operations",
+        constraints="Do not hallucinate policy facts. Cite document titles."
+    )
 
-    user_query = "What is the core purpose of the LexTrace RAG Assistant workspace foundation?"
+    sample_context = (
+        "Document: LexTrace Remote Work Reimbursement Policy 2026\n"
+        "Coverage: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n"
+        "Filing Window: Receipts must be uploaded to the LexTrace HR Portal within 30 days."
+    )
 
-    logger.info("\n[Task 2 & 3] Demonstrating Successful Chat Completion Request & Response:")
-    logger.info(f"  - Outgoing System Prompt: {system_prompt}")
-    logger.info(f"  - Outgoing User Query: {user_query}")
+    user_query_rendered = pm.render_prompt(
+        "rag_query",
+        context=sample_context,
+        question="What is the reimbursement limit and filing deadline for remote work gear?",
+        format_instructions="Summarize in 2 bullet points with document citation."
+    )
+
+    logger.info("\n[Task 2 & 3] Rendered Prompts via PromptManager Engine:")
+    logger.info(f"  - Rendered System Prompt:\n{system_prompt}")
+    logger.info(f"  - Rendered RAG User Query:\n{user_query_rendered}")
 
     # Task 1 & 2 - Initialize client and send chat completion
     client = ChatCompletionClient()
     result = client.create_chat_completion(
-        user_message=user_query,
+        user_message=user_query_rendered,
         system_message=system_prompt,
         allow_mock=True
     )

@@ -1,0 +1,29 @@
+[
+  {
+    "feature": "Feature 1: Interactive RAG Chat",
+    "template_used": "rag_query_template.txt",
+    "injected_values": {
+      "context": "LexTrace Remote Work Reimbursement Policy: Dual monitors, internet stipend $50/month.",
+      "question": "What hardware items qualify for remote reimbursement?",
+      "format_instructions": "Provide a concise bulleted summary."
+    },
+    "rendered_prompt_output": "Retrieved Document Context:\n---\nLexTrace Remote Work Reimbursement Policy: Dual monitors, internet stipend $50/month.\n---\n\nStaff User Question:\nWhat hardware items qualify for remote reimbursement?\n\nFormatting Instructions:\nProvide a concise bulleted summary."
+  },
+  {
+    "feature": "Feature 2: Batch Document Audit CLI",
+    "template_used": "batch_audit_template.txt",
+    "injected_values": {
+      "document_id": "DOC-2026-HR-004",
+      "title": "Executive Travel & Expense Reimbursement Policy",
+      "document_text": "All travel expense reports must be filed within 30 days of trip completion with receipts.",
+      "audit_criteria": "Verify 30-day receipt submission deadline."
+    },
+    "rendered_prompt_output": "Document Audit Target:\n- Document ID: DOC-2026-HR-004\n- Document Title: Executive Travel & Expense Reimbursement Policy\n\nDocument Text:\n===\nAll travel expense reports must be filed within 30 days of trip completion with receipts.\n===\n\nAudit Criteria:\nVerify 30-day receipt submission deadline.\n\nPlease evaluate the document text against the audit criteria above and return your assessment."
+  },
+  {
+    "feature": "Error Handling Validation",
+    "template_used": "rag_query_template.txt",
+    "omitted_variable": "format_instructions",
+    "error_caught": "Cannot render template 'rag_query' (v1.0): Missing required placeholder(s): ['format_instructions']"
+  }
+]

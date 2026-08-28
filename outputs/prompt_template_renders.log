@@ -1,0 +1,64 @@
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]        LexTrace RAG Assistant - Prompt Templating & Placeholder Engine       
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] 
+=====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] [TASK 1 & 4] DEMO 1: TEMPLATE DISCOVERY & PLACEHOLDER EXTRACTION
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] Goal: Load templates from prompts/ directory and discover named placeholders.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]   - Template Name: 'system_prompt' (v1.0)
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]     File Location: system_prompt_template.txt
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]     Discovered Placeholders: ['constraints', 'domain', 'role']
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]   - Template Name: 'rag_query' (v1.0)
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]     File Location: rag_query_template.txt
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]     Discovered Placeholders: ['context', 'format_instructions', 'question']
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]   - Template Name: 'batch_audit' (v1.0)
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]     File Location: batch_audit_template.txt
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]     Discovered Placeholders: ['audit_criteria', 'document_id', 'document_text', 'title']
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] 
+=====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] [TASK 2 & 3] DEMO 2: FEATURE 1 (INTERACTIVE RAG CHAT RUNTIME INJECTION)
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] Goal: Inject dynamic user query and context into shared RAG template.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] Rendered Prompt for Feature 1 (Interactive Chat):
+Retrieved Document Context:
+---
+LexTrace Remote Work Reimbursement Policy: Dual monitors, internet stipend $50/month.
+---
+
+Staff User Question:
+What hardware items qualify for remote reimbursement?
+
+Formatting Instructions:
+Provide a concise bulleted summary.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] 
+=====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] [TASK 2 & 3] DEMO 3: FEATURE 2 (BATCH DOCUMENT AUDIT CLI RUNTIME INJECTION)
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] Goal: Reuse shared batch_audit template across document batch processing.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] Rendered Prompt for Feature 2 (Batch Audit CLI):
+Document Audit Target:
+- Document ID: DOC-2026-HR-004
+- Document Title: Executive Travel & Expense Reimbursement Policy
+
+Document Text:
+===
+All travel expense reports must be filed within 30 days of trip completion with receipts.
+===
+
+Audit Criteria:
+Verify 30-day receipt submission deadline.
+
+Please evaluate the document text against the audit criteria above and return your assessment.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] 
+=====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] [TASK 1] DEMO 4: MISSING PLACEHOLDER ERROR VALIDATION
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] Goal: Verify that missing required placeholders trigger clean diagnostic errors.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]   - Caught Expected Validation Error: Cannot render template 'rag_query' (v1.0): Missing required placeholder(s): ['format_instructions']
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] 
+=====================================================================================
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] SUCCESS: Prompt templating demo completed cleanly.
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]   - Log output saved to:  C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\prompt_template_renders.log
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo]   - JSON renders saved to: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\prompt_template_renders.json
+[2026-08-28 14:12:10] [INFO] [LexTrace.TemplateDemo] =====================================================================================

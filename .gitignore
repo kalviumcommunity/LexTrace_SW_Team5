@@ -42,6 +42,8 @@ outputs/*
 !outputs/parameter_experiments_results.json
 !outputs/structured_output_results.log
 !outputs/structured_output_results.json
+!outputs/prompt_template_renders.log
+!outputs/prompt_template_renders.json
 
 # Vector DB storage
 chroma_db/

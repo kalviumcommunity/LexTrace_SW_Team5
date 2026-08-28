@@ -1,0 +1,90 @@
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]        LexTrace RAG Assistant - Structured Output & Resilient Parsing Suite       
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] 
+=====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] [TASK 1 & 2] SCENARIO 1: PROMPTING FOR STRUCTURED JSON & PARSING INTO DICT
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Goal: Request JSON mode response_format and parse into a clean usable Python dictionary.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Raw Model Completion Output:
+{
+  "answer": "LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.",
+  "sources": [
+    "LexTrace HR Policy Manual Section 4.2",
+    "LexTrace Finance Portal"
+  ],
+  "confidence": 0.98
+}
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Parsing Tier Used: Tier 1: Direct JSON Parse
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Schema Validation Status: VALIDATED_CLEAN
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Usable Python Dictionary Object: {'answer': 'LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.', 'sources': ['LexTrace HR Policy Manual Section 4.2', 'LexTrace Finance Portal'], 'confidence': 0.98}
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] 
+=====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] [TASK 3] SCENARIO 2: MALFORMED JSON RECOVERY (Markdown Code Fence Wrapping)
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Goal: Demonstrate resilient extraction when model wraps JSON inside ```json ... ``` codeblocks.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Raw Model Completion Output (Markdown Wrapped):
+Here is the requested policy information in JSON format:
+
+```json
+{
+  "answer": "LexTrace covers pre-approved dual monitors, ergonomic peripherals, and $50/month internet stipend for remote employees.",
+  "sources": ["LexTrace HR Portal", "Finance Equipment Policy 2026"],
+  "confidence": 0.96
+}
+```
+
+Please let me know if you need any additional citations.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Parsing Tier Used: Tier 2: Markdown Codeblock Extraction
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Recovered Successfully: True
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Recovered Python Object: {'answer': 'LexTrace covers pre-approved dual monitors, ergonomic peripherals, and $50/month internet stipend for remote employees.', 'sources': ['LexTrace HR Portal', 'Finance Equipment Policy 2026'], 'confidence': 0.96}
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] 
+=====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] [TASK 3] SCENARIO 3: MALFORMED JSON GRACEFUL FAILURE HANDLING (Unparseable Syntax)
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Goal: Detect broken JSON syntax without crashing or raising unhandled exceptions.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Raw Model Completion Output (Broken Syntax):
+{
+  "answer": "LexTrace Remote Reimbursement Policy is $50 per month...
+  "sources": ["HR Manual Section 4",
+  "confidence": UNQUOTED_IDENTIFIER_BROKEN
+
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Parsed Successfully: False
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Error Type: UNPARSEABLE_JSON_SYNTAX
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Error Message: The model response could not be decoded as valid JSON.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Application Status: Cleanly caught failure without application crash.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] 
+=====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] [TASK 4] SCENARIO 4: REQUIRED FIELD VALIDATION & AUTO-REMEDIATION
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Goal: Detect missing required fields, map singular 'source' -> 'sources', or apply fallbacks.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Raw JSON Output (Using Singular 'source' Field Alias):
+{
+  "answer": "Employees may claim up to $50/month for remote broadband expenses with itemized invoices.",
+  "source": "LexTrace HR Broadband Stipend Guide v3",
+  "confidence": 0.92
+}
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Validation Status: VALIDATED_WITH_WARNINGS
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Warnings / Auto-Remediations: ["Auto-remediated singular 'source' field into required 'sources' list."]
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Normalized Python Object: {'answer': 'Employees may claim up to $50/month for remote broadband expenses with itemized invoices.', 'source': 'LexTrace HR Broadband Stipend Guide v3', 'confidence': 0.92, 'sources': ['LexTrace HR Broadband Stipend Guide v3']}
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] 
+=====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] [TASK 4] SCENARIO 5: CRITICAL MISSING FIELD REJECTION
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Goal: Reject JSON responses missing required 'answer' payload cleanly.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] Raw JSON Output (Missing Required 'answer' Field):
+{
+  "sources": [
+    "LexTrace Security Policy"
+  ],
+  "confidence": 0.85
+}
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Validation Status: MISSING_REQUIRED_FIELDS
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Error Message: Schema validation failed. Missing required fields: ['answer']
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Missing Fields Detected: ['answer']
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] 
+=====================================================================================
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] SUCCESS: Structured output & resilient parsing suite executed cleanly.
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - Log output saved to:  C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\structured_output_results.log
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo]   - JSON dataset saved to: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\structured_output_results.json
+[2026-08-28 14:06:59] [INFO] [LexTrace.StructuredOutputDemo] =====================================================================================

@@ -1,0 +1,156 @@
+[
+  {
+    "scenario_id": "SCENARIO_01",
+    "title": "Valid Structured JSON Output & Parsing",
+    "raw_response": "{\n  \"answer\": \"LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.\",\n  \"sources\": [\n    \"LexTrace HR Policy Manual Section 4.2\",\n    \"LexTrace Finance Portal\"\n  ],\n  \"confidence\": 0.98\n}",
+    "parsed_result": {
+      "parsed_successfully": true,
+      "tier_used": "Tier 1: Direct JSON Parse",
+      "error_type": null,
+      "error_message": null,
+      "data": {
+        "answer": "LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.",
+        "sources": [
+          "LexTrace HR Policy Manual Section 4.2",
+          "LexTrace Finance Portal"
+        ],
+        "confidence": 0.98
+      },
+      "raw_content": "{\n  \"answer\": \"LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.\",\n  \"sources\": [\n    \"LexTrace HR Policy Manual Section 4.2\",\n    \"LexTrace Finance Portal\"\n  ],\n  \"confidence\": 0.98\n}"
+    },
+    "validation_result": {
+      "valid": true,
+      "status": "VALIDATED_CLEAN",
+      "error": null,
+      "data": {
+        "answer": "LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.",
+        "sources": [
+          "LexTrace HR Policy Manual Section 4.2",
+          "LexTrace Finance Portal"
+        ],
+        "confidence": 0.98
+      },
+      "warnings": []
+    }
+  },
+  {
+    "scenario_id": "SCENARIO_02",
+    "title": "Malformed JSON - Markdown Codeblock Extraction & Recovery",
+    "raw_response": "Here is the requested policy information in JSON format:\n\n```json\n{\n  \"answer\": \"LexTrace covers pre-approved dual monitors, ergonomic peripherals, and $50/month internet stipend for remote employees.\",\n  \"sources\": [\"LexTrace HR Portal\", \"Finance Equipment Policy 2026\"],\n  \"confidence\": 0.96\n}\n```\n\nPlease let me know if you need any additional citations.",
+    "parsed_result": {
+      "parsed_successfully": true,
+      "tier_used": "Tier 2: Markdown Codeblock Extraction",
+      "error_type": null,
+      "error_message": null,
+      "data": {
+        "answer": "LexTrace covers pre-approved dual monitors, ergonomic peripherals, and $50/month internet stipend for remote employees.",
+        "sources": [
+          "LexTrace HR Portal",
+          "Finance Equipment Policy 2026"
+        ],
+        "confidence": 0.96
+      },
+      "raw_content": "Here is the requested policy information in JSON format:\n\n```json\n{\n  \"answer\": \"LexTrace covers pre-approved dual monitors, ergonomic peripherals, and $50/month internet stipend for remote employees.\",\n  \"sources\": [\"LexTrace HR Portal\", \"Finance Equipment Policy 2026\"],\n  \"confidence\": 0.96\n}\n```\n\nPlease let me know if you need any additional citations."
+    },
+    "validation_result": {
+      "valid": true,
+      "status": "VALIDATED_CLEAN",
+      "error": null,
+      "data": {
+        "answer": "LexTrace covers pre-approved dual monitors, ergonomic peripherals, and $50/month internet stipend for remote employees.",
+        "sources": [
+          "LexTrace HR Portal",
+          "Finance Equipment Policy 2026"
+        ],
+        "confidence": 0.96
+      },
+      "warnings": []
+    }
+  },
+  {
+    "scenario_id": "SCENARIO_03",
+    "title": "Malformed JSON - Unparseable Syntax Graceful Handling",
+    "raw_response": "{\n  \"answer\": \"LexTrace Remote Reimbursement Policy is $50 per month...\n  \"sources\": [\"HR Manual Section 4\",\n  \"confidence\": UNQUOTED_IDENTIFIER_BROKEN\n",
+    "parsed_result": {
+      "parsed_successfully": false,
+      "tier_used": "Tier 4: Malformed JSON Fallback Catch",
+      "error_type": "UNPARSEABLE_JSON_SYNTAX",
+      "error_message": "The model response could not be decoded as valid JSON.",
+      "data": null,
+      "raw_content": "{\n  \"answer\": \"LexTrace Remote Reimbursement Policy is $50 per month...\n  \"sources\": [\"HR Manual Section 4\",\n  \"confidence\": UNQUOTED_IDENTIFIER_BROKEN\n"
+    },
+    "validation_result": {
+      "valid": false,
+      "status": "UNPARSED_INPUT",
+      "error": "The model response could not be decoded as valid JSON.",
+      "data": null,
+      "warnings": []
+    }
+  },
+  {
+    "scenario_id": "SCENARIO_04",
+    "title": "Required Field Validation - Alias Normalization & Auto-Remediation",
+    "raw_response": "{\n  \"answer\": \"Employees may claim up to $50/month for remote broadband expenses with itemized invoices.\",\n  \"source\": \"LexTrace HR Broadband Stipend Guide v3\",\n  \"confidence\": 0.92\n}",
+    "parsed_result": {
+      "parsed_successfully": true,
+      "tier_used": "Tier 1: Direct JSON Parse",
+      "error_type": null,
+      "error_message": null,
+      "data": {
+        "answer": "Employees may claim up to $50/month for remote broadband expenses with itemized invoices.",
+        "source": "LexTrace HR Broadband Stipend Guide v3",
+        "confidence": 0.92
+      },
+      "raw_content": "{\n  \"answer\": \"Employees may claim up to $50/month for remote broadband expenses with itemized invoices.\",\n  \"source\": \"LexTrace HR Broadband Stipend Guide v3\",\n  \"confidence\": 0.92\n}"
+    },
+    "validation_result": {
+      "valid": true,
+      "status": "VALIDATED_WITH_WARNINGS",
+      "error": null,
+      "data": {
+        "answer": "Employees may claim up to $50/month for remote broadband expenses with itemized invoices.",
+        "source": "LexTrace HR Broadband Stipend Guide v3",
+        "confidence": 0.92,
+        "sources": [
+          "LexTrace HR Broadband Stipend Guide v3"
+        ]
+      },
+      "warnings": [
+        "Auto-remediated singular 'source' field into required 'sources' list."
+      ]
+    }
+  },
+  {
+    "scenario_id": "SCENARIO_05",
+    "title": "Required Field Validation - Critical Missing Field Rejection",
+    "raw_response": "{\n  \"sources\": [\n    \"LexTrace Security Policy\"\n  ],\n  \"confidence\": 0.85\n}",
+    "parsed_result": {
+      "parsed_successfully": true,
+      "tier_used": "Tier 1: Direct JSON Parse",
+      "error_type": null,
+      "error_message": null,
+      "data": {
+        "sources": [
+          "LexTrace Security Policy"
+        ],
+        "confidence": 0.85
+      },
+      "raw_content": "{\n  \"sources\": [\n    \"LexTrace Security Policy\"\n  ],\n  \"confidence\": 0.85\n}"
+    },
+    "validation_result": {
+      "valid": false,
+      "status": "MISSING_REQUIRED_FIELDS",
+      "error": "Schema validation failed. Missing required fields: ['answer']",
+      "data": {
+        "sources": [
+          "LexTrace Security Policy"
+        ],
+        "confidence": 0.85
+      },
+      "missing_fields": [
+        "answer"
+      ],
+      "warnings": []
+    }
+  }
+]

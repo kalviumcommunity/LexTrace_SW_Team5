@@ -58,10 +58,11 @@ class ChatCompletionClient:
         top_p: Optional[float] = None,
         stop: Optional[Any] = None,
         allow_mock: bool = True,
-        seed: Optional[int] = None
+        seed: Optional[int] = None,
+        response_format: Optional[Dict[str, str]] = None
     ) -> Dict[str, Any]:
         """
-        Sends a Chat Completion request with configurable parameters (temperature, max_tokens, top_p, stop),
+        Sends a Chat Completion request with configurable parameters (temperature, max_tokens, top_p, stop, response_format),
         logs payload and response usage, and handles errors cleanly.
         """
         messages = [
@@ -72,18 +73,43 @@ class ChatCompletionClient:
         # Log outgoing request payload with hyperparameter parameters
         logger.info(f"Sending Chat Completion Request to model '{self.model}' at {self.base_url}")
         logger.info(
-            f"Params -> Temp: {temperature}, MaxTokens: {max_tokens}, TopP: {top_p}, Stop: {stop}"
+            f"Params -> Temp: {temperature}, MaxTokens: {max_tokens}, TopP: {top_p}, Stop: {stop}, ResponseFormat: {response_format}"
         )
 
         # Check for explicit mock mode or dummy key fallback for clean offline verification
         if self.mock_mode or (allow_mock and ("dummy-key" in self.api_key or not self.api_key)):
             logger.info("Executing OpenAI-Compatible Chat Completion (Mock/Verification Mode)...")
             
+            is_json_requested = (
+                (response_format and response_format.get("type") == "json_object") or
+                ("json" in system_message.lower() or "json" in user_message.lower())
+            )
             is_vague = "You are an AI assistant" in system_message or len(system_message) < 80
             user_lower = user_message.lower()
 
+            # Handle JSON response format mode
+            if is_json_requested:
+                import json
+                if "reimbursement" in user_lower or "remote work" in user_lower:
+                    content = json.dumps({
+                        "answer": "LexTrace provides reimbursement for pre-approved dual monitors, ergonomic accessories, and a $50/month internet stipend when itemized receipts are submitted within 30 days via the HR portal.",
+                        "sources": ["LexTrace HR Policy Manual Section 4.2", "LexTrace Finance Portal"],
+                        "confidence": 0.98
+                    }, indent=2)
+                elif "ceo" in user_lower or "salary" in user_lower:
+                    content = json.dumps({
+                        "answer": "I do not have access to private executive compensation or personal address records in the internal LexTrace knowledge base.",
+                        "sources": ["LexTrace Security Policy Manual"],
+                        "confidence": 1.0
+                    }, indent=2)
+                else:
+                    content = json.dumps({
+                        "answer": "The LexTrace RAG Assistant provides factual responses backed by verified internal knowledge base documentation.",
+                        "sources": ["LexTrace Knowledge Base Index"],
+                        "confidence": 0.95
+                    }, indent=2)
             # Dynamic text selection based on temperature and query context
-            if "reimbursement" in user_lower or "remote work" in user_lower:
+            elif "reimbursement" in user_lower or "remote work" in user_lower:
                 if temperature == 0.0:
                     content = (
                         "LexTrace Remote Work Reimbursement Policy Summary:\n"
@@ -208,6 +234,8 @@ class ChatCompletionClient:
                 kwargs["stop"] = stop
             if seed is not None:
                 kwargs["seed"] = seed
+            if response_format is not None:
+                kwargs["response_format"] = response_format
 
             response = self.client.chat.completions.create(**kwargs)
 

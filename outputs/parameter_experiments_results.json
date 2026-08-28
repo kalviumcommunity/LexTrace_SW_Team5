@@ -1,0 +1,187 @@
+{
+  "system_prompt": "You are LexTrace Assistant, an internal AI assistant designed to help company staff members with workplace policies, IT procedures, and internal knowledge base inquiries.\n\nSCOPE & RESPONSIBILITIES:\n1. ONLY answer staff questions using internal workplace facts, policies, and procedures.\n2. Do NOT provide external speculative advice, legal counsel, personal data, or unverified opinions.\n3. Do NOT invent or hallucinate internal policy details that are not verified.\n\nCONSTRAINTS:\n- Tone: Professional, objective, helpful, and concise.\n- Length: Keep responses direct and concise (maximum 3 paragraphs or 150 words).\n- Format: Use bullet points for steps or clear structured paragraphs.\n- Fallback: If a question is outside internal scope or the required information is not available in the internal knowledge base, respond EXACTLY with:\n\"I am sorry, but I do not have access to that information in the internal LexTrace knowledge base. Please contact HR or IT support for further assistance.\"",
+  "user_query": "What is LexTrace's policy on remote work equipment reimbursement?",
+  "task_1_temperature_experiments": [
+    {
+      "temperature": 0.0,
+      "stability_summary": "STABLE / DETERMINISTIC (100% Identical)",
+      "runs": [
+        {
+          "run_id": 1,
+          "output": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\nNote: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 50,
+            "total_tokens": 208
+          },
+          "finish_reason": "stop"
+        },
+        {
+          "run_id": 2,
+          "output": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\nNote: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 50,
+            "total_tokens": 208
+          },
+          "finish_reason": "stop"
+        },
+        {
+          "run_id": 3,
+          "output": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\nNote: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 50,
+            "total_tokens": 208
+          },
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "temperature": 0.7,
+      "stability_summary": "STABLE / DETERMINISTIC (100% Identical)",
+      "runs": [
+        {
+          "run_id": 1,
+          "output": "LexTrace Remote Work Reimbursement Policy:\n- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.\n- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.\nNote: Claims submitted without itemized receipts will be rejected by accounting.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 42,
+            "total_tokens": 200
+          },
+          "finish_reason": "stop"
+        },
+        {
+          "run_id": 2,
+          "output": "LexTrace Remote Work Reimbursement Policy:\n- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.\n- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.\nNote: Claims submitted without itemized receipts will be rejected by accounting.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 42,
+            "total_tokens": 200
+          },
+          "finish_reason": "stop"
+        },
+        {
+          "run_id": 3,
+          "output": "LexTrace Remote Work Reimbursement Policy:\n- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.\n- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.\nNote: Claims submitted without itemized receipts will be rejected by accounting.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 42,
+            "total_tokens": 200
+          },
+          "finish_reason": "stop"
+        }
+      ]
+    },
+    {
+      "temperature": 1.5,
+      "stability_summary": "VARIED / CREATIVE (2 unique variations)",
+      "runs": [
+        {
+          "run_id": 1,
+          "output": "LexTrace provides flexible remote work reimbursement options tailored for distributed team members. Covered items include ergonomic chairs, peripheral displays, and monthly broadband stipends. Ensure all invoices are uploaded to the finance portal within thirty calendar days.\nNote: Late submissions require special variance approval from the VP of Finance.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 48,
+            "total_tokens": 206
+          },
+          "finish_reason": "stop"
+        },
+        {
+          "run_id": 2,
+          "output": "LexTrace might offer remote work reimbursement for employees working from home! Usually, corporate policy covers home office gear like ultra-wide monitors, standing desks, high-speed fiber internet, and monthly wellness stipends up to $500. Make sure to keep digital receipt copies and talk with accounting for approval!\nNote: Department budgets may vary by quarter depending on overall revenue goals.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 58,
+            "total_tokens": 216
+          },
+          "finish_reason": "stop"
+        },
+        {
+          "run_id": 3,
+          "output": "LexTrace provides flexible remote work reimbursement options tailored for distributed team members. Covered items include ergonomic chairs, peripheral displays, and monthly broadband stipends. Ensure all invoices are uploaded to the finance portal within thirty calendar days.\nNote: Late submissions require special variance approval from the VP of Finance.",
+          "usage": {
+            "prompt_tokens": 158,
+            "completion_tokens": 48,
+            "total_tokens": 206
+          },
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  ],
+  "task_2_max_tokens_experiments": [
+    {
+      "max_tokens_setting": 15,
+      "output": "LexTrace Remote Work Reimbursement Policy Summary: - Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and",
+      "completion_tokens": 15,
+      "total_tokens": 173,
+      "finish_reason": "length",
+      "is_truncated": true
+    },
+    {
+      "max_tokens_setting": 35,
+      "output": "LexTrace Remote Work Reimbursement Policy Summary: - Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend. - Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of",
+      "completion_tokens": 35,
+      "total_tokens": 193,
+      "finish_reason": "length",
+      "is_truncated": true
+    },
+    {
+      "max_tokens_setting": 150,
+      "output": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\nNote: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement.",
+      "completion_tokens": 50,
+      "total_tokens": 208,
+      "finish_reason": "stop",
+      "is_truncated": false
+    }
+  ],
+  "task_3_top_p_experiments": [
+    {
+      "top_p_setting": 0.1,
+      "output": "LexTrace Remote Work Reimbursement Policy:\n- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.\n- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.\nNote: Claims submitted without itemized receipts will be rejected by accounting.",
+      "usage": {
+        "prompt_tokens": 158,
+        "completion_tokens": 42,
+        "total_tokens": 200
+      }
+    },
+    {
+      "top_p_setting": 0.95,
+      "output": "LexTrace Remote Work Reimbursement Policy:\n- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.\n- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.\nNote: Claims submitted without itemized receipts will be rejected by accounting.",
+      "usage": {
+        "prompt_tokens": 158,
+        "completion_tokens": 42,
+        "total_tokens": 200
+      }
+    }
+  ],
+  "task_3_stop_sequence_experiments": [
+    {
+      "case_name": "No Stop Sequence",
+      "stop_parameter": null,
+      "output": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\nNote: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement.",
+      "finish_reason": "stop",
+      "completion_tokens": 50
+    },
+    {
+      "case_name": "Stop on 'Note:'",
+      "stop_parameter": [
+        "Note:"
+      ],
+      "output": "LexTrace Remote Work Reimbursement Policy Summary:\n- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\n",
+      "finish_reason": "stop",
+      "completion_tokens": 36
+    },
+    {
+      "case_name": "Stop on Linebreak '\\n'",
+      "stop_parameter": [
+        "\n"
+      ],
+      "output": "LexTrace Remote Work Reimbursement Policy Summary:",
+      "finish_reason": "stop",
+      "completion_tokens": 6
+    }
+  ]
+}

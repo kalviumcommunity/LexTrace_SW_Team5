@@ -38,6 +38,8 @@ outputs/*
 !outputs/token_analysis_results.json
 !outputs/chat_history_trimming_results.log
 !outputs/chat_history_trimming_results.json
+!outputs/parameter_experiments_results.log
+!outputs/parameter_experiments_results.json
 
 # Vector DB storage
 chroma_db/

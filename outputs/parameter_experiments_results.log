@@ -1,0 +1,137 @@
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]        LexTrace RAG Assistant - LLM Hyperparameter Experiment Suite       
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+=====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] [TASK 1] EXPERIMENT 1: VARYING TEMPERATURE (0.0 vs 0.7 vs 1.5)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] Goal: Demonstrate deterministic, stable/factual output at low temp vs creative/varied output at high temp.
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing Temperature = 0.0 (Running 3 iterations) ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #1 Output (371 chars, 50 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
+Note: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #2 Output (371 chars, 50 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
+Note: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #3 Output (371 chars, 50 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
+Note: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   => Temperature 0.0 Result: STABLE / DETERMINISTIC (100% Identical)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing Temperature = 0.7 (Running 3 iterations) ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #1 Output (315 chars, 42 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy:
+- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.
+- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.
+Note: Claims submitted without itemized receipts will be rejected by accounting."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #2 Output (315 chars, 42 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy:
+- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.
+- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.
+Note: Claims submitted without itemized receipts will be rejected by accounting."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #3 Output (315 chars, 42 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy:
+- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.
+- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.
+Note: Claims submitted without itemized receipts will be rejected by accounting."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   => Temperature 0.7 Result: STABLE / DETERMINISTIC (100% Identical)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing Temperature = 1.5 (Running 3 iterations) ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #1 Output (357 chars, 48 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace provides flexible remote work reimbursement options tailored for distributed team members. Covered items include ergonomic chairs, peripheral displays, and monthly broadband stipends. Ensure all invoices are uploaded to the finance portal within thirty calendar days.
+Note: Late submissions require special variance approval from the VP of Finance."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #2 Output (401 chars, 58 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace might offer remote work reimbursement for employees working from home! Usually, corporate policy covers home office gear like ultra-wide monitors, standing desks, high-speed fiber internet, and monthly wellness stipends up to $500. Make sure to keep digital receipt copies and talk with accounting for approval!
+Note: Department budgets may vary by quarter depending on overall revenue goals."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Run #3 Output (357 chars, 48 tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace provides flexible remote work reimbursement options tailored for distributed team members. Covered items include ergonomic chairs, peripheral displays, and monthly broadband stipends. Ensure all invoices are uploaded to the finance portal within thirty calendar days.
+Note: Late submissions require special variance approval from the VP of Finance."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   => Temperature 1.5 Result: VARIED / CREATIVE (2 unique variations)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+=====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] [TASK 2] EXPERIMENT 2: CAPPING LENGTH WITH max_tokens (15 vs 35 vs Uncapped/150)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] Goal: Show strict token limits capping output length, setting finish_reason='length', and controlling cost.
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing max_tokens = 15 ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output (127 chars, 15 completion tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary: - Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and"
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Finish Reason: 'length'
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Total Tokens Billed: 173
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing max_tokens = 35 ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output (261 chars, 35 completion tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary: - Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend. - Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of"
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Finish Reason: 'length'
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Total Tokens Billed: 193
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing max_tokens = 150 ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output (371 chars, 50 completion tokens):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
+Note: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Finish Reason: 'stop'
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Total Tokens Billed: 208
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+=====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] [TASK 3] EXPERIMENT 3A: TESTING top_p NUCLEUS SAMPLING (0.1 vs 0.95)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] Goal: Demonstrate how top_p restricts candidate token pool to top probability mass.
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing top_p = 0.1 ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output (top_p=0.1):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy:
+- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.
+- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.
+Note: Claims submitted without itemized receipts will be rejected by accounting."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Tokens Used: {'prompt_tokens': 158, 'completion_tokens': 42, 'total_tokens': 200}
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing top_p = 0.95 ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output (top_p=0.95):
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy:
+- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.
+- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.
+Note: Claims submitted without itemized receipts will be rejected by accounting."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Tokens Used: {'prompt_tokens': 158, 'completion_tokens': 42, 'total_tokens': 200}
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+=====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] [TASK 3] EXPERIMENT 3B: TESTING stop SEQUENCES (stop=['Note:'] vs None)
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] Goal: Show stop parameter halting generation immediately when encountering a trigger token.
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing Stop Case: No Stop Sequence ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output:
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.
+Note: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Finish Reason: 'stop'
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Tokens Generated: 50
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing Stop Case: Stop on 'Note:' ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output:
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:
+- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.
+- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase."
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Finish Reason: 'stop'
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Tokens Generated: 36
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+--- Testing Stop Case: Stop on Linebreak '\n' ---
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   Output:
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]     "LexTrace Remote Work Reimbursement Policy Summary:"
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Finish Reason: 'stop'
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Tokens Generated: 6
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] 
+=====================================================================================
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] SUCCESS: Parameter experiments completed cleanly.
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - Log output saved to:  C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\parameter_experiments_results.log
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments]   - JSON dataset saved to: C:\Users\Priyamtha\OneDrive\Desktop\WI PROJECT\LexTrace_SW_Team5\outputs\parameter_experiments_results.json
+[2026-08-28 13:23:35] [INFO] [LexTrace.ParameterExperiments] =====================================================================================

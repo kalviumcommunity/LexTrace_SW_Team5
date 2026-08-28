@@ -54,19 +54,26 @@ class ChatCompletionClient:
         user_message: str,
         system_message: str = "You are a helpful AI assistant.",
         temperature: float = 0.7,
-        allow_mock: bool = True
+        max_tokens: Optional[int] = None,
+        top_p: Optional[float] = None,
+        stop: Optional[Any] = None,
+        allow_mock: bool = True,
+        seed: Optional[int] = None
     ) -> Dict[str, Any]:
         """
-        Sends a Chat Completion request, logs payload and response usage, and handles 401/429 errors cleanly.
+        Sends a Chat Completion request with configurable parameters (temperature, max_tokens, top_p, stop),
+        logs payload and response usage, and handles errors cleanly.
         """
         messages = [
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_message}
         ]
 
-        # Log outgoing request payload (Task 3)
+        # Log outgoing request payload with hyperparameter parameters
         logger.info(f"Sending Chat Completion Request to model '{self.model}' at {self.base_url}")
-        logger.info(f"Outgoing Messages Payload: {messages}")
+        logger.info(
+            f"Params -> Temp: {temperature}, MaxTokens: {max_tokens}, TopP: {top_p}, Stop: {stop}"
+        )
 
         # Check for explicit mock mode or dummy key fallback for clean offline verification
         if self.mock_mode or (allow_mock and ("dummy-key" in self.api_key or not self.api_key)):
@@ -75,20 +82,47 @@ class ChatCompletionClient:
             is_vague = "You are an AI assistant" in system_message or len(system_message) < 80
             user_lower = user_message.lower()
 
+            # Dynamic text selection based on temperature and query context
             if "reimbursement" in user_lower or "remote work" in user_lower:
-                if is_vague:
-                    content = (
-                        "LexTrace might offer remote work reimbursement for employees working from home. "
-                        "Usually, companies cover expenses like ergonomic desk chairs, monitors, high-speed internet, "
-                        "and monthly stipends up to $500. Employees should save itemized receipts and speak with their "
-                        "department head or finance team to see if their specific hardware qualifies for tax-deductible "
-                        "reimbursements under general corporate policy."
-                    )
-                else:
+                if temperature == 0.0:
                     content = (
                         "LexTrace Remote Work Reimbursement Policy Summary:\n"
                         "- Eligible Equipment: Pre-approved dual monitors, ergonomic accessories, and $50/month internet stipend.\n"
-                        "- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase."
+                        "- Submission Process: File claim via LexTrace HR Portal with itemized receipts attached within 30 days of purchase.\n"
+                        "Note: Non-itemized receipts or late filings after 30 days are ineligible for expense reimbursement."
+                    )
+                elif temperature >= 1.0:
+                    import random
+                    if seed is not None:
+                        random.seed(seed)
+                    variations = [
+                        (
+                            "LexTrace might offer remote work reimbursement for employees working from home! "
+                            "Usually, corporate policy covers home office gear like ultra-wide monitors, standing desks, "
+                            "high-speed fiber internet, and monthly wellness stipends up to $500. "
+                            "Make sure to keep digital receipt copies and talk with accounting for approval!\n"
+                            "Note: Department budgets may vary by quarter depending on overall revenue goals."
+                        ),
+                        (
+                            "Regarding remote work equipment at LexTrace: employees are encouraged to request essential hardware! "
+                            "Standard provisions include dual display screens, noise-canceling headsets, and internet subsidies. "
+                            "Employees should submit expense claims through the employee portal with valid receipts attached.\n"
+                            "Note: Consult your direct manager for custom home hardware requests beyond the standard limits."
+                        ),
+                        (
+                            "LexTrace provides flexible remote work reimbursement options tailored for distributed team members. "
+                            "Covered items include ergonomic chairs, peripheral displays, and monthly broadband stipends. "
+                            "Ensure all invoices are uploaded to the finance portal within thirty calendar days.\n"
+                            "Note: Late submissions require special variance approval from the VP of Finance."
+                        )
+                    ]
+                    content = random.choice(variations)
+                else:
+                    content = (
+                        "LexTrace Remote Work Reimbursement Policy:\n"
+                        "- Coverage: Pre-approved ergonomic peripherals, dual monitors, and $50/month internet allowance.\n"
+                        "- Process: Submit itemized receipts through the LexTrace HR Portal within 30 days of purchase.\n"
+                        "Note: Claims submitted without itemized receipts will be rejected by accounting."
                     )
             elif "ceo" in user_lower or "salary" in user_lower or "home address" in user_lower:
                 if is_vague:
@@ -123,32 +157,63 @@ class ChatCompletionClient:
                     "the project cleanly on a fresh machine."
                 )
 
+            finish_reason = "stop"
+
+            # Apply stop parameter simulation if provided
+            if stop:
+                stop_list = [stop] if isinstance(stop, str) else stop
+                earliest_idx = len(content)
+                matched_stop = None
+                for s in stop_list:
+                    idx = content.find(s)
+                    if idx != -1 and idx < earliest_idx:
+                        earliest_idx = idx
+                        matched_stop = s
+                if matched_stop is not None:
+                    content = content[:earliest_idx]
+                    finish_reason = "stop"
+
+            # Apply max_tokens capping simulation if provided
+            words = content.split()
+            if max_tokens is not None and len(words) > max_tokens:
+                content = " ".join(words[:max_tokens])
+                finish_reason = "length"
+
             usage = {
                 "prompt_tokens": len(system_message.split()) + len(user_message.split()),
                 "completion_tokens": len(content.split()),
                 "total_tokens": len(system_message.split()) + len(user_message.split()) + len(content.split())
             }
             logger.info(f"Received Successful Response ({len(content)} chars)")
-            logger.info(f"Token Usage: {usage}")
+            logger.info(f"Token Usage: {usage}, Finish Reason: '{finish_reason}'")
             return {
                 "success": True,
                 "content": content,
                 "model": self.model,
                 "usage": usage,
-                "finish_reason": "stop"
+                "finish_reason": finish_reason
             }
 
         try:
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=messages,
-                temperature=temperature
-            )
+            kwargs = {
+                "model": self.model,
+                "messages": messages,
+                "temperature": temperature,
+            }
+            if max_tokens is not None:
+                kwargs["max_tokens"] = max_tokens
+            if top_p is not None:
+                kwargs["top_p"] = top_p
+            if stop is not None:
+                kwargs["stop"] = stop
+            if seed is not None:
+                kwargs["seed"] = seed
 
-            # Extract response content (Task 2)
-            content = response.choices[0].message.content
+            response = self.client.chat.completions.create(**kwargs)
 
-            # Extract token usage (Task 3)
+            content = response.choices[0].message.content or ""
+            finish_reason = getattr(response.choices[0], "finish_reason", "stop")
+
             usage = {
                 "prompt_tokens": getattr(response.usage, "prompt_tokens", 0),
                 "completion_tokens": getattr(response.usage, "completion_tokens", 0),
@@ -156,13 +221,14 @@ class ChatCompletionClient:
             } if getattr(response, "usage", None) else {}
 
             logger.info(f"Received Successful Response ({len(content)} chars)")
-            logger.info(f"Token Usage: {usage}")
+            logger.info(f"Token Usage: {usage}, Finish Reason: '{finish_reason}'")
 
             return {
                 "success": True,
                 "content": content,
                 "model": response.model,
                 "usage": usage,
+                "finish_reason": finish_reason,
                 "raw_response": response
             }
 

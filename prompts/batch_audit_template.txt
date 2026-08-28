@@ -1,0 +1,13 @@
+Document Audit Target:
+- Document ID: {document_id}
+- Document Title: {title}
+
+Document Text:
+===
+{document_text}
+===
+
+Audit Criteria:
+{audit_criteria}
+
+Please evaluate the document text against the audit criteria above and return your assessment.

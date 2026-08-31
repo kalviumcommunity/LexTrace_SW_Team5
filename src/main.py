@@ -39,13 +39,22 @@ def main():
     if sample_file.exists():
         with open(sample_file, "r", encoding="utf-8") as f:
             docs = json.load(f)
-        print(f"  - Successfully loaded {len(docs)} sample document(s).")
+        print(f"  - Successfully loaded {len(docs)} JSON document(s).")
         
         from src.data_validation import validate_dataset
         val_result = validate_dataset(sample_file)
         print(f"  - Data Validation Status: [{'OK' if val_result['valid'] else 'FAILED'}] ({val_result.get('total_records', 0)} valid records)")
     else:
-        print("  - Sample document file not found.")
+        print("  - Sample JSON document file not found.")
+
+    corpus_dir = Config.DATA_DIR / "sample_corpus"
+    if corpus_dir.exists():
+        from src.document_loader import DocumentLoader
+        loader = DocumentLoader(base_dir=Config.BASE_DIR)
+        corpus_docs = loader.load_directory(corpus_dir)
+        succ = [d for d in corpus_docs if d.status == "SUCCESS"]
+        print(f"  - Multi-Format Corpus Ingestion: {len(succ)}/{len(corpus_docs)} files processed successfully across PDF, HTML, MD, and TXT.")
+
 
     # 4. Verify system prompt loading
     print("\n[4/4] Testing Prompt Template Loading:")

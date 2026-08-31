@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LexTrace Support & Internal FAQ</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .faq-header { color: #003366; border-bottom: 2px solid #003366; }
+        .question { font-weight: bold; color: #222; margin-top: 15px; }
+        .answer { margin-bottom: 15px; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="faq-header">
+        <h1>Internal Staff FAQ & Knowledge Base</h1>
+    </div>
+
+    <div class="question">Q1: How do I report a security vulnerability or leaked API key?</div>
+    <div class="answer">Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected key in the developer dashboard within 15 minutes.</div>
+
+    <div class="question">Q2: Where can I find API rate limits for internal LLM microservices?</div>
+    <div class="answer">The default rate limit is 1,000 requests per minute per service account. High-throughput batch processing requires pre-approval from the AI Platform team.</div>
+
+    <div class="question">Q3: What formats does the RAG document loader support?</div>
+    <div class="answer">The loader accepts PDF files, HTML web pages, Markdown documentation, and plain text files. Unsupported binary files are safely ignored.</div>
+</body>
+</html>

@@ -27,6 +27,8 @@ data/*
 !data/.gitkeep
 !data/sample_documents.json
 !data/transaction_schema.json
+!data/sample_corpus/
+!data/sample_corpus/**
 
 # Output logs and generated responses (keep placeholder files)
 outputs/*
@@ -44,6 +46,8 @@ outputs/*
 !outputs/structured_output_results.json
 !outputs/prompt_template_renders.log
 !outputs/prompt_template_renders.json
+!outputs/document_loader_results.json
+
 
 # Vector DB storage
 chroma_db/

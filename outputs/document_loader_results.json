@@ -1,0 +1,79 @@
+[
+  {
+    "source_id": "data/sample_corpus/company_policy.pdf",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\company_policy.pdf",
+    "file_type": "pdf",
+    "char_count": 365,
+    "word_count": 52,
+    "status": "SUCCESS",
+    "error_message": null,
+    "loaded_at": "2026-08-31T10:20:06.028332Z",
+    "sample_snippet": "LexTrace Governance & Compliance Policy\n1. Scope and Applicability\nThis policy applies to all full-time employees, contractors, and technical staff.\n2..."
+  },
+  {
+    "source_id": "data/sample_corpus/corrupt_doc.pdf",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\corrupt_doc.pdf",
+    "file_type": "pdf",
+    "char_count": 0,
+    "word_count": 0,
+    "status": "FAILED",
+    "error_message": "Parsing error (PdfStreamError): Stream has ended unexpectedly",
+    "loaded_at": "2026-08-31T10:20:06.028865Z",
+    "sample_snippet": ""
+  },
+  {
+    "source_id": "data/sample_corpus/employee_handbook.txt",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\employee_handbook.txt",
+    "file_type": "txt",
+    "char_count": 856,
+    "word_count": 123,
+    "status": "SUCCESS",
+    "error_message": null,
+    "loaded_at": "2026-08-31T10:20:06.029383Z",
+    "sample_snippet": "LexTrace Internal Employee Handbook\n\n1. Code of Conduct\nAll team members are expected to maintain professional standards, foster an inclusive engineer..."
+  },
+  {
+    "source_id": "data/sample_corpus/faq_guide.html",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\faq_guide.html",
+    "file_type": "html",
+    "char_count": 664,
+    "word_count": 101,
+    "status": "SUCCESS",
+    "error_message": null,
+    "loaded_at": "2026-08-31T10:20:06.031006Z",
+    "sample_snippet": "Internal Staff FAQ & Knowledge Base\nQ1: How do I report a security vulnerability or leaked API key?\nImmediately notify the InfoSec response team at se..."
+  },
+  {
+    "source_id": "data/sample_corpus/system_architecture.md",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\system_architecture.md",
+    "file_type": "md",
+    "char_count": 1077,
+    "word_count": 137,
+    "status": "SUCCESS",
+    "error_message": null,
+    "loaded_at": "2026-08-31T10:20:06.032185Z",
+    "sample_snippet": "# LexTrace RAG Architecture & Ingestion Guidelines\n\n## Overview\nThe LexTrace Retrieval-Augmented Generation (RAG) system ingests heterogeneous interna..."
+  },
+  {
+    "source_id": "data/sample_corpus/unsupported_logo.png",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\unsupported_logo.png",
+    "file_type": "png",
+    "char_count": 0,
+    "word_count": 0,
+    "status": "FAILED",
+    "error_message": "Unsupported file format '.png'. Allowed: ['.txt', '.md', '.markdown', '.html', '.htm', '.pdf']",
+    "loaded_at": "2026-08-31T10:20:06.033329Z",
+    "sample_snippet": ""
+  },
+  {
+    "source_id": "data/sample_corpus/missing_audit_report.txt",
+    "source_path": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\missing_audit_report.txt",
+    "file_type": "txt",
+    "char_count": 0,
+    "word_count": 0,
+    "status": "FAILED",
+    "error_message": "File not found: C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus\\missing_audit_report.txt",
+    "loaded_at": "2026-08-31T10:20:06.033879Z",
+    "sample_snippet": ""
+  }
+]

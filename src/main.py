@@ -57,6 +57,13 @@ def main():
         print(f"  - Multi-Format Corpus Ingestion: {len(succ)}/{len(corpus_docs)} files processed successfully across PDF, HTML, MD, and TXT.")
         print(f"  - Text Cleaning Pipeline Status: [OK] ({cleaned_count} documents normalized & cleaned)")
 
+        from src.document_chunker import DocumentChunker
+        chunker = DocumentChunker()
+        benchmark = chunker.compare_strategies(succ, chunk_size=500, overlap=100)
+        sem_chunks = benchmark["recursive_semantic_stats"]["total_chunks"]
+        print(f"  - Document Chunking Pipeline Status: [OK] ({sem_chunks} semantic chunks generated across corpus)")
+
+
 
 
     # 4. Verify system prompt loading

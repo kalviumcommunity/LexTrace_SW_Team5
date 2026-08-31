@@ -50,10 +50,13 @@ def main():
     corpus_dir = Config.DATA_DIR / "sample_corpus"
     if corpus_dir.exists():
         from src.document_loader import DocumentLoader
-        loader = DocumentLoader(base_dir=Config.BASE_DIR)
+        loader = DocumentLoader(base_dir=Config.BASE_DIR, clean_text=True)
         corpus_docs = loader.load_directory(corpus_dir)
         succ = [d for d in corpus_docs if d.status == "SUCCESS"]
+        cleaned_count = len([d for d in succ if d.is_cleaned])
         print(f"  - Multi-Format Corpus Ingestion: {len(succ)}/{len(corpus_docs)} files processed successfully across PDF, HTML, MD, and TXT.")
+        print(f"  - Text Cleaning Pipeline Status: [OK] ({cleaned_count} documents normalized & cleaned)")
+
 
 
     # 4. Verify system prompt loading

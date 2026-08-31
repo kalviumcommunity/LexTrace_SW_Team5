@@ -1,0 +1,187 @@
+================================================================================
+         LEXTRACE TEXT CLEANING PIPELINE BEFORE/AFTER EVIDENCE LOG         
+================================================================================
+
+DOCUMENT: data/sample_corpus/company_policy.pdf
+FORMAT  : PDF
+RAW CHARS: 365 | CLEAN CHARS: 365 | REDUCTION: 0.0%
+BEFORE:
+LexTrace Governance & Compliance Policy
+1. Scope and Applicability
+This policy applies to all full-time employees, contractors, and technical staff.
+2. Data Classification & Access
+All customer queries processed by RAG models are classified as Confidential.
+3. Audit & Logging Standards
+Document intake logs, metadata tags, and retrieval requests must be preserved.
+
+AFTER:
+LexTrace Governance & Compliance Policy
+1. Scope and Applicability
+This policy applies to all full-time employees, contractors, and technical staff.
+2. Data Classification & Access
+All customer queries processed by RAG models are classified as Confidential.
+3. Audit & Logging Standards
+Document intake logs, metadata tags, and retrieval requests must be preserved.
+
+================================================================================
+
+DOCUMENT: data/sample_corpus/employee_handbook.txt
+FORMAT  : TXT
+RAW CHARS: 856 | CLEAN CHARS: 856 | REDUCTION: 0.0%
+BEFORE:
+LexTrace Internal Employee Handbook
+
+1. Code of Conduct
+All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confidentiality at all times.
+
+2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authentication (MFA) must be enabled on all developer accounts.
+- API keys, credentials, and customer data must never be committed to Git repositories.
+- Use environment variables (`.env`) for local development configuration.
+
+4. Intellectual Property
+All software, scripts, datasets, and prompt templates developed during employment belong exclusively to LexTrace Inc.
+
+AFTER:
+LexTrace Internal Employee Handbook
+
+1. Code of Conduct
+All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confidentiality at all times.
+
+2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authentication (MFA) must be enabled on all developer accounts.
+- API keys, credentials, and customer data must never be committed to Git repositories.
+- Use environment variables ('.env') for local development configuration.
+
+4. Intellectual Property
+All software, scripts, datasets, and prompt templates developed during employment belong exclusively to LexTrace Inc.
+
+================================================================================
+
+DOCUMENT: data/sample_corpus/faq_guide.html
+FORMAT  : HTML
+RAW CHARS: 664 | CLEAN CHARS: 664 | REDUCTION: 0.0%
+BEFORE:
+Internal Staff FAQ & Knowledge Base
+Q1: How do I report a security vulnerability or leaked API key?
+Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected key in the developer dashboard within 15 minutes.
+Q2: Where can I find API rate limits for internal LLM microservices?
+The default rate limit is 1,000 requests per minute per service account. High-throughput batch processing requires pre-approval from the AI Platform team.
+Q3: What formats does the RAG document loader support?
+The loader accepts PDF files, HTML web pages, Markdown documentation, and plain text files. Unsupported binary files are safely ignored.
+
+AFTER:
+Internal Staff FAQ & Knowledge Base
+Q1: How do I report a security vulnerability or leaked API key?
+Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected key in the developer dashboard within 15 minutes.
+Q2: Where can I find API rate limits for internal LLM microservices?
+The default rate limit is 1,000 requests per minute per service account. High-throughput batch processing requires pre-approval from the AI Platform team.
+Q3: What formats does the RAG document loader support?
+The loader accepts PDF files, HTML web pages, Markdown documentation, and plain text files. Unsupported binary files are safely ignored.
+
+================================================================================
+
+DOCUMENT: data/sample_corpus/noisy_policy_document.txt
+FORMAT  : TXT
+RAW CHARS: 721 | CLEAN CHARS: 610 | REDUCTION: 15.4%
+BEFORE:
+Home > Internal Policies > Security Guidelines
+CONFIDENTIAL & PROPRIETARY — STRICTLY FOR INTERNAL USE ONLY
+
+LexTrace Data Classification & Handling Policy
+
+Page 1 of 4
+
+1. Data Classi-
+fication Standards
+All customer queries processed by our Retrieval-
+Augmented Generation (RAG) system must be categor-
+ized as Confidential.
+
+Page 2 of 4
+
+2. Password & Key Mana-
+gement
+Never store raw API keys, database credentials, or secret\xa0tokens in source code. Use environment variables (“.env”) for configuration.
+
+- Page 3 of 4 -
+
+3. Audit Logging
+System logs must track docu-
+ment ingestion timestamps, file paths, and chunk metadata for downstream auditability.
+
+Page 4 of 4
+CONFIDENTIAL & PROPRIETARY — ALL RIGHTS RESERVED
+
+AFTER:
+CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY
+
+LexTrace Data Classification & Handling Policy
+
+1. Data Classification Standards
+All customer queries processed by our Retrieval-Augmented Generation (RAG) system must be categorized as Confidential.
+
+2. Password & Key Management
+Never store raw API keys, database credentials, or secret\xa0tokens in source code. Use environment variables (".env") for configuration.
+
+3. Audit Logging
+System logs must track document ingestion timestamps, file paths, and chunk metadata for downstream auditability.
+
+CONFIDENTIAL & PROPRIETARY - ALL RIGHTS RESERVED
+
+================================================================================
+
+DOCUMENT: data/sample_corpus/system_architecture.md
+FORMAT  : MD
+RAW CHARS: 1077 | CLEAN CHARS: 1077 | REDUCTION: 0.0%
+BEFORE:
+# LexTrace RAG Architecture & Ingestion Guidelines
+
+## Overview
+The LexTrace Retrieval-Augmented Generation (RAG) system ingests heterogeneous internal documents, indexes them into vector storage, and provides precise context-grounded answers for internal team queries.
+
+## Component Specifications
+
+### 1. Document Ingestion Layer
+- **Multi-format Support**: Parses `.pdf`, `.html`, `.md`, and `.txt` files.
+- **Normalization**: Extracts raw text, strips HTML DOM tags, and standardizes white space.
+- **Source Identification**: Attaches relative file paths to retain auditability and citation lineage.
+
+### 2. Vector Embedding & Retrieval
+- **Embedding Model**: `text-embedding-3-small` (1536 dimensions).
+- **Vector Store**: ChromaDB instance running in persistence mode.
+- **Chunking Strategy**: Recursive character splitter with 500-token chunk size and 50-token overlap.
+
+### 3. Context Window Management
+- Enforces strict token budgets using `tiktoken` (`cl100k_base` / `o200k_base`).
+- Prunes oldest messages dynamically when conversation context exceeds system bounds.
+
+AFTER:
+# LexTrace RAG Architecture & Ingestion Guidelines
+
+## Overview
+The LexTrace Retrieval-Augmented Generation (RAG) system ingests heterogeneous internal documents, indexes them into vector storage, and provides precise context-grounded answers for internal team queries.
+
+## Component Specifications
+
+### 1. Document Ingestion Layer
+- **Multi-format Support**: Parses '.pdf', '.html', '.md', and '.txt' files.
+- **Normalization**: Extracts raw text, strips HTML DOM tags, and standardizes white space.
+- **Source Identification**: Attaches relative file paths to retain auditability and citation lineage.
+
+### 2. Vector Embedding & Retrieval
+- **Embedding Model**: 'text-embedding-3-small' (1536 dimensions).
+- **Vector Store**: ChromaDB instance running in persistence mode.
+- **Chunking Strategy**: Recursive character splitter with 500-token chunk size and 50-token overlap.
+
+### 3. Context Window Management
+- Enforces strict token budgets using 'tiktoken' ('cl100k_base' / 'o200k_base').
+- Prunes oldest messages dynamically when conversation context exceeds system bounds.
+
+================================================================================

@@ -1,0 +1,28 @@
+Home > Internal Policies > Security Guidelines
+CONFIDENTIAL & PROPRIETARY — STRICTLY FOR INTERNAL USE ONLY
+
+LexTrace Data Classification & Handling Policy
+
+Page 1 of 4
+
+1. Data Classi-
+fication Standards
+All customer queries processed by our Retrieval-
+Augmented Generation (RAG) system must be categor-
+ized as Confidential.
+
+Page 2 of 4
+
+2. Password & Key Mana-
+gement
+Never store raw API keys, database credentials, or secret\xa0tokens in source code. Use environment variables (“.env”) for configuration.
+
+- Page 3 of 4 -
+
+3. Audit Logging
+System logs must track docu-
+ment ingestion timestamps, file paths, and chunk metadata for downstream auditability.
+
+
+Page 4 of 4
+CONFIDENTIAL & PROPRIETARY — ALL RIGHTS RESERVED

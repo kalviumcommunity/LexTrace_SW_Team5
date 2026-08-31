@@ -49,6 +49,9 @@ outputs/*
 !outputs/document_loader_results.json
 !outputs/text_cleaning_results.json
 !outputs/text_cleaning_before_after.log
+!outputs/chunking_comparison_results.json
+!outputs/sample_chunks_comparison.log
+
 
 
 # Vector DB storage

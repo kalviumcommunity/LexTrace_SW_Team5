@@ -1,0 +1,96 @@
+{
+  "benchmark_summary": {
+    "fixed_window": {
+      "name": "Fixed Window with Overlap",
+      "total_chunks": 10,
+      "avg_char_size": 406.9,
+      "min_char_size": 209,
+      "max_char_size": 500,
+      "avg_token_size": 83.3,
+      "min_token_size": 42,
+      "max_token_size": 115,
+      "total_tokens": 833,
+      "fragmented_chunks": 5,
+      "fragmentation_pct": 50.0
+    },
+    "recursive_semantic": {
+      "name": "Recursive Semantic Boundary",
+      "total_chunks": 12,
+      "avg_char_size": 354.8,
+      "min_char_size": 243,
+      "max_char_size": 472,
+      "avg_token_size": 72.2,
+      "min_token_size": 44,
+      "max_token_size": 96,
+      "total_tokens": 867,
+      "fragmented_chunks": 2,
+      "fragmentation_pct": 16.7
+    }
+  },
+  "sample_chunks": {
+    "fixed_window": [
+      {
+        "chunk_id": "data/sample_corpus/employee_handbook.txt#chunk-001",
+        "source_id": "data/sample_corpus/employee_handbook.txt",
+        "chunk_index": 0,
+        "char_count": 500,
+        "word_count": 74,
+        "token_count": 97,
+        "strategy": "fixed_window",
+        "start_char": 0,
+        "end_char": 500,
+        "snippet": "LexTrace Internal Employee Handbook\n\n1. Code of Conduct\nAll team members are expected to maintain professional standards..."
+      },
+      {
+        "chunk_id": "data/sample_corpus/employee_handbook.txt#chunk-002",
+        "source_id": "data/sample_corpus/employee_handbook.txt",
+        "chunk_index": 1,
+        "char_count": 455,
+        "word_count": 63,
+        "token_count": 85,
+        "strategy": "fixed_window",
+        "start_char": 400,
+        "end_char": 856,
+        "snippet": "active status updates in Slack.\n\n3. System Access & Security\n- Mandatory multi-factor authentication (MFA) must be enabl..."
+      }
+    ],
+    "recursive_semantic": [
+      {
+        "chunk_id": "data/sample_corpus/employee_handbook.txt#chunk-001",
+        "source_id": "data/sample_corpus/employee_handbook.txt",
+        "chunk_index": 0,
+        "char_count": 430,
+        "word_count": 65,
+        "token_count": 85,
+        "strategy": "recursive_semantic",
+        "start_char": 0,
+        "end_char": 430,
+        "snippet": "LexTrace Internal Employee Handbook 1. Code of Conduct\nAll team members are expected to maintain professional standards,..."
+      },
+      {
+        "chunk_id": "data/sample_corpus/employee_handbook.txt#chunk-002",
+        "source_id": "data/sample_corpus/employee_handbook.txt",
+        "chunk_index": 1,
+        "char_count": 379,
+        "word_count": 56,
+        "token_count": 80,
+        "strategy": "recursive_semantic",
+        "start_char": 330,
+        "end_char": 709,
+        "snippet": "tween 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack. 3. System Access & ..."
+      },
+      {
+        "chunk_id": "data/sample_corpus/employee_handbook.txt#chunk-003",
+        "source_id": "data/sample_corpus/employee_handbook.txt",
+        "chunk_index": 2,
+        "char_count": 243,
+        "word_count": 31,
+        "token_count": 44,
+        "strategy": "recursive_semantic",
+        "start_char": 609,
+        "end_char": 852,
+        "snippet": "itted to Git repositories.\n- Use environment variables ('.env') for local development configuration. 4. Intellectual Pro..."
+      }
+    ]
+  }
+}

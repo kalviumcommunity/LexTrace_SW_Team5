@@ -1,0 +1,48 @@
+================================================================================
+          LEXTRACE DOCUMENT CHUNKING BOUNDARY EVIDENCE LOG          
+================================================================================
+
+TARGET DOCUMENT: data/sample_corpus/employee_handbook.txt
+
+=== STRATEGY A: FIXED WINDOW CHUNKS ===
+
+--- Chunk data/sample_corpus/employee_handbook.txt#chunk-001 (500 chars, 97 tokens) ---
+LexTrace Internal Employee Handbook
+
+1. Code of Conduct
+All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confidentiality at all times.
+
+2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authenticatio
+
+--- Chunk data/sample_corpus/employee_handbook.txt#chunk-002 (455 chars, 85 tokens) ---
+active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authentication (MFA) must be enabled on all developer accounts.
+- API keys, credentials, and customer data must never be committed to Git repositories.
+- Use environment variables ('.env') for local development configuration.
+
+4. Intellectual Property
+All software, scripts, datasets, and prompt templates developed during employment belong exclusively to LexTrace Inc.
+
+=== STRATEGY B: RECURSIVE SEMANTIC CHUNKS ===
+
+--- Chunk data/sample_corpus/employee_handbook.txt#chunk-001 (430 chars, 85 tokens) ---
+LexTrace Internal Employee Handbook 1. Code of Conduct
+All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confidentiality at all times. 2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+
+--- Chunk data/sample_corpus/employee_handbook.txt#chunk-002 (379 chars, 80 tokens) ---
+tween 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack. 3. System Access & Security
+- Mandatory multi-factor authentication (MFA) must be enabled on all developer accounts.
+- API keys, credentials, and customer data must never be committed to Git repositories.
+- Use environment variables ('.env') for local development configuration.
+
+--- Chunk data/sample_corpus/employee_handbook.txt#chunk-003 (243 chars, 44 tokens) ---
+itted to Git repositories.
+- Use environment variables ('.env') for local development configuration. 4. Intellectual Property
+All software, scripts, datasets, and prompt templates developed during employment belong exclusively to LexTrace Inc.

@@ -47,6 +47,8 @@ outputs/*
 !outputs/prompt_template_renders.log
 !outputs/prompt_template_renders.json
 !outputs/document_loader_results.json
+!outputs/text_cleaning_results.json
+!outputs/text_cleaning_before_after.log
 
 
 # Vector DB storage

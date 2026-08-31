@@ -27,6 +27,8 @@ except ImportError:
     logger.warning("beautifulsoup4 package not installed. HTML tag stripping will use fallback regex.")
 
 
+from src.text_cleaner import TextCleaner
+
 @dataclass
 class LoadedDocument:
     """
@@ -36,9 +38,12 @@ class LoadedDocument:
     source_id: str                          # Relative path / filename for downstream citation
     source_path: str                        # Absolute filesystem path
     file_type: str                          # Standardized format tag: pdf, html, md, txt
-    text_content: str = ""                  # Clean plain-text representation
-    char_count: int = 0                     # Total character count
-    word_count: int = 0                     # Total word count
+    text_content: str = ""                  # Clean, normalized plain-text representation
+    raw_content: str = ""                   # Raw extracted content before cleaning
+    char_count: int = 0                     # Total cleaned character count
+    word_count: int = 0                     # Total cleaned word count
+    raw_char_count: int = 0                 # Raw uncleaned character count
+    is_cleaned: bool = False                # Indicates if cleaning pipeline was applied
     status: str = "SUCCESS"                 # Loading status: SUCCESS or FAILED
     error_message: Optional[str] = None     # Descriptive error reason if status == FAILED
     loaded_at: str = field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")
@@ -50,7 +55,9 @@ class LoadedDocument:
             "source_path": self.source_path,
             "file_type": self.file_type,
             "char_count": self.char_count,
+            "raw_char_count": self.raw_char_count,
             "word_count": self.word_count,
+            "is_cleaned": self.is_cleaned,
             "status": self.status,
             "error_message": self.error_message,
             "loaded_at": self.loaded_at,
@@ -62,7 +69,7 @@ class DocumentLoader:
     """
     Multi-format document loader for RAG pipelines.
     Converts PDFs, HTML, Markdown, and TXT files into a unified plain-text format,
-    tags documents with source identifiers, and isolates failures gracefully.
+    tags documents with source identifiers, applies text cleaning, and isolates failures gracefully.
     """
     
     SUPPORTED_EXTENSIONS = {
@@ -74,14 +81,17 @@ class DocumentLoader:
         ".pdf": "pdf"
     }
 
-    def __init__(self, base_dir: Optional[Union[str, Path]] = None):
+    def __init__(self, base_dir: Optional[Union[str, Path]] = None, clean_text: bool = True):
         """
         Initialize DocumentLoader.
         
         Args:
             base_dir: Optional base directory to compute relative source_id paths.
+            clean_text: If True, applies TextCleaner pipeline to all ingested text.
         """
         self.base_dir = Path(base_dir).resolve() if base_dir else None
+        self.clean_text = clean_text
+        self.cleaner = TextCleaner() if clean_text else None
 
     def _get_source_id(self, file_path: Path) -> str:
         """Derive consistent relative source identifier or filename for citation."""
@@ -135,31 +145,43 @@ class DocumentLoader:
         # 3. Format-specific parsing with error boundaries
         try:
             if file_type == "txt":
-                text = self._parse_txt(path)
+                raw_text = self._parse_txt(path)
             elif file_type == "md":
-                text = self._parse_md(path)
+                raw_text = self._parse_md(path)
             elif file_type == "html":
-                text = self._parse_html(path)
+                raw_text = self._parse_html(path)
             elif file_type == "pdf":
-                text = self._parse_pdf(path)
+                raw_text = self._parse_pdf(path)
             else:
                 raise ValueError(f"No parser handler registered for format: {file_type}")
 
-            # Clean and normalize white space
-            normalized_text = self._normalize_text(text)
-            char_len = len(normalized_text)
-            word_count = len(normalized_text.split())
+            raw_char_len = len(raw_text)
 
-            logger.info(f"[{source_id}] Ingested successfully ({char_len} chars, {word_count} words)")
+            # Apply TextCleaner if enabled (Task 3: Consistent Application across Corpus)
+            if self.clean_text and self.cleaner:
+                cleaned_text = self.cleaner.clean_text(raw_text)
+                is_cleaned = True
+            else:
+                cleaned_text = self._normalize_text(raw_text)
+                is_cleaned = False
+
+            char_len = len(cleaned_text)
+            word_count = len(cleaned_text.split())
+
+            logger.info(f"[{source_id}] Ingested successfully ({char_len} chars, {word_count} words, cleaned={is_cleaned})")
             return LoadedDocument(
                 source_id=source_id,
                 source_path=str(path),
                 file_type=file_type,
-                text_content=normalized_text,
+                raw_content=raw_text,
+                text_content=cleaned_text,
                 char_count=char_len,
+                raw_char_count=raw_char_len,
                 word_count=word_count,
+                is_cleaned=is_cleaned,
                 status="SUCCESS"
             )
+
 
         except Exception as e:
             error_desc = f"Parsing error ({type(e).__name__}): {str(e)}"

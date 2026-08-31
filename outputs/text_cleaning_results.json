@@ -1,0 +1,56 @@
+[
+  {
+    "source_id": "data/sample_corpus/company_policy.pdf",
+    "file_type": "pdf",
+    "raw_char_count": 365,
+    "cleaned_char_count": 365,
+    "char_reduction_pct": 0.0,
+    "artifacts_repaired": [],
+    "before_snippet": "LexTrace Governance & Compliance Policy 1. Scope and Applicability This policy applies to all full-time employees, contractors, and technical staff. 2. Data Classification & Access All customer querie",
+    "after_snippet": "LexTrace Governance & Compliance Policy 1. Scope and Applicability This policy applies to all full-time employees, contractors, and technical staff. 2. Data Classification & Access All customer querie"
+  },
+  {
+    "source_id": "data/sample_corpus/employee_handbook.txt",
+    "file_type": "txt",
+    "raw_char_count": 856,
+    "cleaned_char_count": 856,
+    "char_reduction_pct": 0.0,
+    "artifacts_repaired": [],
+    "before_snippet": "LexTrace Internal Employee Handbook  1. Code of Conduct All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confid",
+    "after_snippet": "LexTrace Internal Employee Handbook  1. Code of Conduct All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confid"
+  },
+  {
+    "source_id": "data/sample_corpus/faq_guide.html",
+    "file_type": "html",
+    "raw_char_count": 664,
+    "cleaned_char_count": 664,
+    "char_reduction_pct": 0.0,
+    "artifacts_repaired": [],
+    "before_snippet": "Internal Staff FAQ & Knowledge Base Q1: How do I report a security vulnerability or leaked API key? Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected k",
+    "after_snippet": "Internal Staff FAQ & Knowledge Base Q1: How do I report a security vulnerability or leaked API key? Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected k"
+  },
+  {
+    "source_id": "data/sample_corpus/noisy_policy_document.txt",
+    "file_type": "txt",
+    "raw_char_count": 721,
+    "cleaned_char_count": 610,
+    "char_reduction_pct": 15.4,
+    "artifacts_repaired": [
+      "Non-standard smart quotes & em-dashes",
+      "Header / Footer page numbers",
+      "Broken hyphenated line wraps"
+    ],
+    "before_snippet": "Home > Internal Policies > Security Guidelines CONFIDENTIAL & PROPRIETARY \u2014 STRICTLY FOR INTERNAL USE ONLY  LexTrace Data Classification & Handling Policy  Page 1 of 4  1. Data Classi- fication Standa",
+    "after_snippet": "CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY  LexTrace Data Classification & Handling Policy  1. Data Classification Standards All customer queries processed by our Retrieval-Augmented "
+  },
+  {
+    "source_id": "data/sample_corpus/system_architecture.md",
+    "file_type": "md",
+    "raw_char_count": 1077,
+    "cleaned_char_count": 1077,
+    "char_reduction_pct": 0.0,
+    "artifacts_repaired": [],
+    "before_snippet": "# LexTrace RAG Architecture & Ingestion Guidelines  ## Overview The LexTrace Retrieval-Augmented Generation (RAG) system ingests heterogeneous internal documents, indexes them into vector storage, and",
+    "after_snippet": "# LexTrace RAG Architecture & Ingestion Guidelines  ## Overview The LexTrace Retrieval-Augmented Generation (RAG) system ingests heterogeneous internal documents, indexes them into vector storage, and"
+  }
+]

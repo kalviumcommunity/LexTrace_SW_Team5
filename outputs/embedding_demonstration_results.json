@@ -1,0 +1,87 @@
+{
+  "model_info": {
+    "embedding_model": "text-embedding-3-small",
+    "vector_dimension": 1536,
+    "uniform_dimensions": true
+  },
+  "sample_texts": [
+    {
+      "id": "Text_A (Policy 1)",
+      "text": "All team members are required to enable multi-factor authentication (MFA) to secure developer accounts.",
+      "category": "Security Policy"
+    },
+    {
+      "id": "Text_B (Policy 2)",
+      "text": "Mandatory multi-factor authentication (MFA) must be configured on all staff login accounts.",
+      "category": "Security Policy (Similar)"
+    },
+    {
+      "id": "Text_C (Unrelated)",
+      "text": "The employee cafeteria serves hot pasta, green salad, and fresh soup every Tuesday.",
+      "category": "Cafeteria Menu (Dissimilar)"
+    }
+  ],
+  "vector_samples": {
+    "Text_A": {
+      "length": 1536,
+      "slice_first_10": [
+        -0.011593,
+        0.000697,
+        0.006375,
+        0.020793,
+        0.002146,
+        0.007466,
+        0.031903,
+        0.025355,
+        0.025694,
+        0.019317
+      ]
+    },
+    "Text_B": {
+      "length": 1536,
+      "slice_first_10": [
+        -0.010341,
+        0.001562,
+        0.001848,
+        0.00574,
+        0.011601,
+        0.012209,
+        0.013662,
+        0.029148,
+        0.026614,
+        0.023628
+      ]
+    },
+    "Text_C": {
+      "length": 1536,
+      "slice_first_10": [
+        0.039408,
+        0.024683,
+        0.030931,
+        0.030206,
+        0.041474,
+        0.031968,
+        0.019434,
+        0.01976,
+        0.019893,
+        0.02755
+      ]
+    }
+  },
+  "similarity_comparisons": {
+    "similar_pair_A_B": {
+      "description": "Text A vs Text B (Security Policies)",
+      "cosine_similarity": 0.8961
+    },
+    "dissimilar_pair_A_C": {
+      "description": "Text A vs Text C (Security vs Cafeteria)",
+      "cosine_similarity": -0.0016
+    },
+    "dissimilar_pair_B_C": {
+      "description": "Text B vs Text C (Security vs Cafeteria)",
+      "cosine_similarity": 0.0002
+    },
+    "similar_pair_scores_higher": true
+  },
+  "explanation_note": "Embedding vectors are continuous numerical representations of text meaning in high-dimensional vector space (e.g. 1536 dimensions for text-embedding-3-small). They are NOT random database IDs, nor are they simple sparse keyword frequency counts (like BM25 or TF-IDF).\n\nEach floating-point number in an embedding vector captures a abstract semantic feature or concept (such as sentiment, topic, formality, or domain context). Because similar concepts are mapped to nearby coordinates in vector space, calculating the cosine distance between vectors allows RAG systems to retrieve relevant context based on conceptual meaning\u2014even when the query and document use completely different vocabulary or synonyms."
+}

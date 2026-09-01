@@ -1,0 +1,254 @@
+{
+  "execution_metadata": {
+    "timestamp": "2026-09-01T07:52:12.043025Z",
+    "duration_seconds": 0.033,
+    "target_directory": "C:\\Users\\Priyamtha\\OneDrive\\Desktop\\WI PROJECT\\LexTrace_SW_Team5\\data\\sample_corpus",
+    "model_name": "gpt-4o-mini"
+  },
+  "ingestion_reconciliation_audit": {
+    "total_discovered_files": 7,
+    "successfully_ingested_files": 5,
+    "recorded_failures_or_skipped": 2,
+    "total_processed_files": 7,
+    "reconciliation_equation": "7 == 5 + 2",
+    "reconciliation_status": "VERIFIED_NO_SILENT_DROPS"
+  },
+  "chunking_summary": {
+    "total_chunks_created": 6,
+    "avg_tokens_per_chunk": 128.0,
+    "avg_chars_per_chunk": 626.0,
+    "max_tokens_per_chunk_setting": 200,
+    "overlap_tokens_setting": 40
+  },
+  "recorded_failures": [
+    {
+      "source_id": "data/sample_corpus/corrupt_doc.pdf",
+      "file_type": "pdf",
+      "error_message": "Parsing error (PdfStreamError): Stream has ended unexpectedly"
+    },
+    {
+      "source_id": "data/sample_corpus/unsupported_logo.png",
+      "file_type": "png",
+      "error_message": "Unsupported file format '.png'. Allowed: ['.txt', '.md', '.markdown', '.html', '.htm', '.pdf']"
+    }
+  ],
+  "sample_chunks_inspection": [
+    {
+      "chunk_id": "data/sample_corpus/company_policy.pdf#chunk-001",
+      "source_id": "data/sample_corpus/company_policy.pdf",
+      "chunk_index": 0,
+      "char_count": 365,
+      "word_count": 52,
+      "token_count": 70,
+      "strategy": "token_aware",
+      "start_char": 0,
+      "end_char": 365,
+      "metadata": {
+        "source_id": "data/sample_corpus/company_policy.pdf",
+        "section": "1. Scope and Applicability",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 365,
+        "file_type": "pdf",
+        "char_count": 365,
+        "token_count": 70,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.074427Z"
+      },
+      "snippet": "LexTrace Governance & Compliance Policy\n1. Scope and Applicability\nThis policy applies to all full-time employees, contr..."
+    },
+    {
+      "chunk_id": "data/sample_corpus/employee_handbook.txt#chunk-001",
+      "source_id": "data/sample_corpus/employee_handbook.txt",
+      "chunk_index": 0,
+      "char_count": 856,
+      "word_count": 123,
+      "token_count": 163,
+      "strategy": "token_aware",
+      "start_char": 0,
+      "end_char": 856,
+      "metadata": {
+        "source_id": "data/sample_corpus/employee_handbook.txt",
+        "section": "1. Code of Conduct",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 856,
+        "file_type": "txt",
+        "char_count": 856,
+        "token_count": 163,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.075006Z"
+      },
+      "snippet": "LexTrace Internal Employee Handbook\n\n1. Code of Conduct\nAll team members are expected to maintain professional standards..."
+    },
+    {
+      "chunk_id": "data/sample_corpus/faq_guide.html#chunk-001",
+      "source_id": "data/sample_corpus/faq_guide.html",
+      "chunk_index": 0,
+      "char_count": 664,
+      "word_count": 101,
+      "token_count": 135,
+      "strategy": "token_aware",
+      "start_char": 0,
+      "end_char": 664,
+      "metadata": {
+        "source_id": "data/sample_corpus/faq_guide.html",
+        "section": "Q1: How do I report a security vulnerability or leaked API key?",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 664,
+        "file_type": "html",
+        "char_count": 664,
+        "token_count": 135,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.075006Z"
+      },
+      "snippet": "Internal Staff FAQ & Knowledge Base\nQ1: How do I report a security vulnerability or leaked API key?\nImmediately notify t..."
+    },
+    {
+      "chunk_id": "data/sample_corpus/noisy_policy_document.txt#chunk-001",
+      "source_id": "data/sample_corpus/noisy_policy_document.txt",
+      "chunk_index": 0,
+      "char_count": 610,
+      "word_count": 82,
+      "token_count": 122,
+      "strategy": "token_aware",
+      "start_char": 0,
+      "end_char": 610,
+      "metadata": {
+        "source_id": "data/sample_corpus/noisy_policy_document.txt",
+        "section": "1. Data Classification Standards",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 610,
+        "file_type": "txt",
+        "char_count": 610,
+        "token_count": 122,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.075006Z"
+      },
+      "snippet": "CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY\n\nLexTrace Data Classification & Handling Policy\n\n1. Data Cla..."
+    },
+    {
+      "chunk_id": "data/sample_corpus/system_architecture.md#chunk-001",
+      "source_id": "data/sample_corpus/system_architecture.md",
+      "chunk_index": 0,
+      "char_count": 910,
+      "word_count": 116,
+      "token_count": 200,
+      "strategy": "token_aware",
+      "start_char": 0,
+      "end_char": 910,
+      "metadata": {
+        "source_id": "data/sample_corpus/system_architecture.md",
+        "section": "Overview",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 910,
+        "file_type": "md",
+        "char_count": 910,
+        "token_count": 200,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.075585Z"
+      },
+      "snippet": "# LexTrace RAG Architecture & Ingestion Guidelines\n\n## Overview\nThe LexTrace Retrieval-Augmented Generation (RAG) system..."
+    }
+  ],
+  "traceability_verifications": [
+    {
+      "chunk_id": "data/sample_corpus/company_policy.pdf#chunk-001",
+      "source_id": "data/sample_corpus/company_policy.pdf",
+      "traceability_status": "VERIFIED",
+      "source_id_matched": true,
+      "position_verified": true,
+      "exact_text_match": true,
+      "start_char": 0,
+      "end_char": 365,
+      "citation_string": "[Source: data/sample_corpus/company_policy.pdf | Section: '1. Scope and Applicability' | Page: 1 | Pos: #1 | Chars: 0-365]",
+      "chunk_text": "LexTrace Governance & Compliance Policy\n1. Scope and Applicability\nThis policy applies to all full-time employees, contractors, and technical staff.\n2. Data Classification & Access\nAll customer queries processed by RAG models are classified as Confidential.\n3. Audit & Logging Standards\nDocument intake logs, metadata tags, and retrieval requests must be preserved.",
+      "surrounding_context": {
+        "prefix": "",
+        "target_chunk": "LexTrace Governance & Compliance Policy\n1. Scope and Applicability\nThis policy applies to all full-time employees, contractors, and technical staff.\n2. Data Classification & Access\nAll customer queries processed by RAG models are classified as Confidential.\n3. Audit & Logging Standards\nDocument intake logs, metadata tags, and retrieval requests must be preserved.",
+        "suffix": ""
+      },
+      "metadata_summary": {
+        "source_id": "data/sample_corpus/company_policy.pdf",
+        "section": "1. Scope and Applicability",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 365,
+        "file_type": "pdf",
+        "char_count": 365,
+        "token_count": 70,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.074427Z"
+      }
+    },
+    {
+      "chunk_id": "data/sample_corpus/noisy_policy_document.txt#chunk-001",
+      "source_id": "data/sample_corpus/noisy_policy_document.txt",
+      "traceability_status": "VERIFIED",
+      "source_id_matched": true,
+      "position_verified": true,
+      "exact_text_match": true,
+      "start_char": 0,
+      "end_char": 610,
+      "citation_string": "[Source: data/sample_corpus/noisy_policy_document.txt | Section: '1. Data Classification Standards' | Page: 1 | Pos: #1 | Chars: 0-610]",
+      "chunk_text": "CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY\n\nLexTrace Data Classification & Handling Policy\n\n1. Data Classification Standards\nAll customer queries processed by our Retrieval-Augmented Generation (RAG) system must be categorized as Confidential.\n\n2. Password & Key Management\nNever store raw API keys, database credentials, or secret\\xa0tokens in source code. Use environment variables (\".env\") for configuration.\n\n3. Audit Logging\nSystem logs must track document ingestion timestamps, file paths, and chunk metadata for downstream auditability.\n\nCONFIDENTIAL & PROPRIETARY - ALL RIGHTS RESERVED",
+      "surrounding_context": {
+        "prefix": "",
+        "target_chunk": "CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY\n\nLexTrace Data Classification & Handling Policy\n\n1. Data Classification Standards\nAll customer queries processed by our Retrieval-Augmented Generation (RAG) system must be categorized as Confidential.\n\n2. Password & Key Management\nNever store raw API keys, database credentials, or secret\\xa0tokens in source code. Use environment variables (\".env\") for configuration.\n\n3. Audit Logging\nSystem logs must track document ingestion timestamps, file paths, and chunk metadata for downstream auditability.\n\nCONFIDENTIAL & PROPRIETARY - ALL RIGHTS RESERVED",
+        "suffix": ""
+      },
+      "metadata_summary": {
+        "source_id": "data/sample_corpus/noisy_policy_document.txt",
+        "section": "1. Data Classification Standards",
+        "page_number": 1,
+        "chunk_index": 0,
+        "start_char": 0,
+        "end_char": 610,
+        "file_type": "txt",
+        "char_count": 610,
+        "token_count": 122,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.075006Z"
+      }
+    },
+    {
+      "chunk_id": "data/sample_corpus/system_architecture.md#chunk-002",
+      "source_id": "data/sample_corpus/system_architecture.md",
+      "traceability_status": "VERIFIED",
+      "source_id_matched": true,
+      "position_verified": true,
+      "exact_text_match": true,
+      "start_char": 726,
+      "end_char": 1077,
+      "citation_string": "[Source: data/sample_corpus/system_architecture.md | Section: '2. Vector Embedding & Retrieval' | Page: 1 | Pos: #2 | Chars: 726-1077]",
+      "chunk_text": ": ChromaDB instance running in persistence mode.\n- **Chunking Strategy**: Recursive character splitter with 500-token chunk size and 50-token overlap.\n\n### 3. Context Window Management\n- Enforces strict token budgets using 'tiktoken' ('cl100k_base' / 'o200k_base').\n- Prunes oldest messages dynamically when conversation context exceeds system bounds.",
+      "surrounding_context": {
+        "prefix": "mbedding Model**: 'text-embedding-3-small' (1536 dimensions).\n- **Vector Store**",
+        "target_chunk": ": ChromaDB instance running in persistence mode.\n- **Chunking Strategy**: Recursive character splitter with 500-token chunk size and 50-token overlap.\n\n### 3. Context Window Management\n- Enforces strict token budgets using 'tiktoken' ('cl100k_base' / 'o200k_base').\n- Prunes oldest messages dynamically when conversation context exceeds system bounds.",
+        "suffix": ""
+      },
+      "metadata_summary": {
+        "source_id": "data/sample_corpus/system_architecture.md",
+        "section": "2. Vector Embedding & Retrieval",
+        "page_number": 1,
+        "chunk_index": 1,
+        "start_char": 726,
+        "end_char": 1077,
+        "file_type": "md",
+        "char_count": 351,
+        "token_count": 78,
+        "strategy": "token_aware",
+        "created_at": "2026-09-01T07:52:12.075585Z"
+      }
+    }
+  ]
+}

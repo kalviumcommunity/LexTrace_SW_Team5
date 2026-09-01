@@ -1,0 +1,61 @@
+================================================================================
+      LEXTRACE FULL-CORPUS INGESTION & AUDIT EXECUTION LOG      
+================================================================================
+
+TIMESTAMP         : 2026-09-01T07:52:12.043025Z
+DURATION          : 0.033s
+TOTAL DISCOVERED  : 7
+SUCCESSFUL INGEST : 5
+RECORDED FAILURES : 2
+RECONCILIATION    : VERIFIED_NO_SILENT_DROPS (7 == 5 + 2)
+
+================================================================================
+=== RECORDED FAILURES breakdown ===
+  - [PDF] data/sample_corpus/corrupt_doc.pdf -> Error: Parsing error (PdfStreamError): Stream has ended unexpectedly
+  - [PNG] data/sample_corpus/unsupported_logo.png -> Error: Unsupported file format '.png'. Allowed: ['.txt', '.md', '.markdown', '.html', '.htm', '.pdf']
+
+=== SAMPLE CHUNKS WITH METADATA ===
+
+Chunk ID: data/sample_corpus/company_policy.pdf#chunk-001
+Source: data/sample_corpus/company_policy.pdf | Section: 1. Scope and Applicability | Page: 1 | Pos: #1
+Tokens: 70 | Chars: 365 | Offsets: 0-365
+Text:
+LexTrace Governance & Compliance Policy
+1. Scope and Applicability
+This policy applies to all full-time employees, contr...
+
+Chunk ID: data/sample_corpus/employee_handbook.txt#chunk-001
+Source: data/sample_corpus/employee_handbook.txt | Section: 1. Code of Conduct | Page: 1 | Pos: #1
+Tokens: 163 | Chars: 856 | Offsets: 0-856
+Text:
+LexTrace Internal Employee Handbook
+
+1. Code of Conduct
+All team members are expected to maintain professional standards...
+
+Chunk ID: data/sample_corpus/faq_guide.html#chunk-001
+Source: data/sample_corpus/faq_guide.html | Section: Q1: How do I report a security vulnerability or leaked API key? | Page: 1 | Pos: #1
+Tokens: 135 | Chars: 664 | Offsets: 0-664
+Text:
+Internal Staff FAQ & Knowledge Base
+Q1: How do I report a security vulnerability or leaked API key?
+Immediately notify t...
+
+Chunk ID: data/sample_corpus/noisy_policy_document.txt#chunk-001
+Source: data/sample_corpus/noisy_policy_document.txt | Section: 1. Data Classification Standards | Page: 1 | Pos: #1
+Tokens: 122 | Chars: 610 | Offsets: 0-610
+Text:
+CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY
+
+LexTrace Data Classification & Handling Policy
+
+1. Data Cla...
+
+Chunk ID: data/sample_corpus/system_architecture.md#chunk-001
+Source: data/sample_corpus/system_architecture.md | Section: Overview | Page: 1 | Pos: #1
+Tokens: 200 | Chars: 910 | Offsets: 0-910
+Text:
+# LexTrace RAG Architecture & Ingestion Guidelines
+
+## Overview
+The LexTrace Retrieval-Augmented Generation (RAG) system...

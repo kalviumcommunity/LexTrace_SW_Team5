@@ -51,6 +51,8 @@ outputs/*
 !outputs/text_cleaning_before_after.log
 !outputs/chunking_comparison_results.json
 !outputs/sample_chunks_comparison.log
+!outputs/sample_chunks_with_metadata.json
+!outputs/traceback_demonstration.log
 
 
 

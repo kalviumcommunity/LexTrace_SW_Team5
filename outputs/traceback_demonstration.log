@@ -1,0 +1,68 @@
+--- Traceback Sample #1 ---
+Chunk ID: data/sample_corpus/company_policy.pdf#chunk-001
+Source ID: data/sample_corpus/company_policy.pdf
+Citation: [Source: data/sample_corpus/company_policy.pdf | Section: '1. Scope and Applicability' | Page: 1 | Pos: #1 | Chars: 0-365]
+Traceability Status: VERIFIED
+Chunk Text:
+LexTrace Governance & Compliance Policy
+1. Scope and Applicability
+This policy applies to all full-time employees, contractors, and technical staff.
+2. Data Classification & Access
+All customer queries processed by RAG models are classified as Confidential.
+3. Audit & Logging Standards
+Document intake logs, metadata tags, and retrieval requests must be preserved.
+Surrounding Context Window:
+[PREFIX] 
+[TARGET] LexTrace Governance & Compliance Policy
+1. Scope and Applicability
+This policy applies to all full-time employees, contractors, and technical staff.
+2. Data Classification & Access
+All customer queries processed by RAG models are classified as Confidential.
+3. Audit & Logging Standards
+Document intake logs, metadata tags, and retrieval requests must be preserved.
+[SUFFIX] 
+---------------------------------------------------------------------------
+--- Traceback Sample #2 ---
+Chunk ID: data/sample_corpus/noisy_policy_document.txt#chunk-001
+Source ID: data/sample_corpus/noisy_policy_document.txt
+Citation: [Source: data/sample_corpus/noisy_policy_document.txt | Section: '1. Data Classification Standards' | Page: 1 | Pos: #1 | Chars: 0-258]
+Traceability Status: VERIFIED
+Chunk Text:
+CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY LexTrace Data Classification & Handling Policy 1. Data Classification Standards
+All customer queries processed by our Retrieval-Augmented Generation (RAG) system must be categorized as Confidential.
+Surrounding Context Window:
+[PREFIX] 
+[TARGET] CONFIDENTIAL & PROPRIETARY - STRICTLY FOR INTERNAL USE ONLY LexTrace Data Classification & Handling Policy 1. Data Classification Standards
+All customer queries processed by our Retrieval-Augmented Generation (RAG) system must be categorized as Confidential.
+[SUFFIX] l.
+
+2. Password & Key Management
+Never store raw API keys, database credentials, or secret\xa0tokens
+---------------------------------------------------------------------------
+--- Traceback Sample #3 ---
+Chunk ID: data/sample_corpus/employee_handbook.txt#chunk-002
+Source ID: data/sample_corpus/employee_handbook.txt
+Citation: [Source: data/sample_corpus/employee_handbook.txt | Section: '1. Code of Conduct' | Page: 1 | Pos: #2 | Chars: 1-289]
+Traceability Status: VERIFIED
+Chunk Text:
+ngineering culture, and protect company and client confidentiality at all times. 2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+Surrounding Context Window:
+[PREFIX] L
+[TARGET] ngineering culture, and protect company and client confidentiality at all times. 2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+[SUFFIX] ybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaborati
+---------------------------------------------------------------------------
+--- Traceback Sample #4 ---
+Chunk ID: data/sample_corpus/faq_guide.html#chunk-001
+Source ID: data/sample_corpus/faq_guide.html
+Citation: [Source: data/sample_corpus/faq_guide.html | Section: 'Q1: How do I report a security vulnerability or leaked API key?' | Page: 1 | Pos: #1 | Chars: 0-317]
+Traceability Status: VERIFIED
+Chunk Text:
+Internal Staff FAQ & Knowledge Base Q1: How do I report a security vulnerability or leaked API key? Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected key in the developer dashboard within 15 minutes. Q2: Where can I find API rate limits for internal LLM microservices?
+Surrounding Context Window:
+[PREFIX] 
+[TARGET] Internal Staff FAQ & Knowledge Base Q1: How do I report a security vulnerability or leaked API key? Immediately notify the InfoSec response team at security@lextrace.internal and revoke the affected key in the developer dashboard within 15 minutes. Q2: Where can I find API rate limits for internal LLM microservices?
+[SUFFIX] 
+The default rate limit is 1,000 requests per minute per service account. High-throughput batch proc
+---------------------------------------------------------------------------

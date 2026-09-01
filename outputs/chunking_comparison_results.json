@@ -39,6 +39,19 @@
         "strategy": "fixed_window",
         "start_char": 0,
         "end_char": 500,
+        "metadata": {
+          "source_id": "data/sample_corpus/employee_handbook.txt",
+          "section": "1. Code of Conduct",
+          "page_number": 1,
+          "chunk_index": 0,
+          "start_char": 0,
+          "end_char": 500,
+          "file_type": "txt",
+          "char_count": 500,
+          "token_count": 97,
+          "strategy": "fixed_window",
+          "created_at": "2026-09-01T07:43:54.100844Z"
+        },
         "snippet": "LexTrace Internal Employee Handbook\n\n1. Code of Conduct\nAll team members are expected to maintain professional standards..."
       },
       {
@@ -49,8 +62,21 @@
         "word_count": 63,
         "token_count": 85,
         "strategy": "fixed_window",
-        "start_char": 400,
+        "start_char": 401,
         "end_char": 856,
+        "metadata": {
+          "source_id": "data/sample_corpus/employee_handbook.txt",
+          "section": "3. System Access & Security",
+          "page_number": 1,
+          "chunk_index": 1,
+          "start_char": 401,
+          "end_char": 856,
+          "file_type": "txt",
+          "char_count": 455,
+          "token_count": 85,
+          "strategy": "fixed_window",
+          "created_at": "2026-09-01T07:43:54.100844Z"
+        },
         "snippet": "active status updates in Slack.\n\n3. System Access & Security\n- Mandatory multi-factor authentication (MFA) must be enabl..."
       }
     ],
@@ -65,6 +91,19 @@
         "strategy": "recursive_semantic",
         "start_char": 0,
         "end_char": 430,
+        "metadata": {
+          "source_id": "data/sample_corpus/employee_handbook.txt",
+          "section": "1. Code of Conduct",
+          "page_number": 1,
+          "chunk_index": 0,
+          "start_char": 0,
+          "end_char": 430,
+          "file_type": "txt",
+          "char_count": 430,
+          "token_count": 85,
+          "strategy": "recursive_semantic",
+          "created_at": "2026-09-01T07:43:54.100844Z"
+        },
         "snippet": "LexTrace Internal Employee Handbook 1. Code of Conduct\nAll team members are expected to maintain professional standards,..."
       },
       {
@@ -75,8 +114,21 @@
         "word_count": 56,
         "token_count": 80,
         "strategy": "recursive_semantic",
-        "start_char": 330,
-        "end_char": 709,
+        "start_char": 1,
+        "end_char": 380,
+        "metadata": {
+          "source_id": "data/sample_corpus/employee_handbook.txt",
+          "section": "1. Code of Conduct",
+          "page_number": 1,
+          "chunk_index": 1,
+          "start_char": 1,
+          "end_char": 380,
+          "file_type": "txt",
+          "char_count": 379,
+          "token_count": 80,
+          "strategy": "recursive_semantic",
+          "created_at": "2026-09-01T07:43:54.101813Z"
+        },
         "snippet": "tween 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack. 3. System Access & ..."
       },
       {
@@ -87,8 +139,21 @@
         "word_count": 31,
         "token_count": 44,
         "strategy": "recursive_semantic",
-        "start_char": 609,
-        "end_char": 852,
+        "start_char": 2,
+        "end_char": 245,
+        "metadata": {
+          "source_id": "data/sample_corpus/employee_handbook.txt",
+          "section": "1. Code of Conduct",
+          "page_number": 1,
+          "chunk_index": 2,
+          "start_char": 2,
+          "end_char": 245,
+          "file_type": "txt",
+          "char_count": 243,
+          "token_count": 44,
+          "strategy": "recursive_semantic",
+          "created_at": "2026-09-01T07:43:54.101813Z"
+        },
         "snippet": "itted to Git repositories.\n- Use environment variables ('.env') for local development configuration. 4. Intellectual Pro..."
       }
     ]

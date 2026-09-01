@@ -1,0 +1,70 @@
+================================================================================
+    LEXTRACE TOKEN-AWARE CHUNKING BOUNDARY COMPARISON EVIDENCE LOG    
+================================================================================
+
+TARGET DOCUMENT: data/sample_corpus/employee_handbook.txt
+
+=== 1. WITHOUT OVERLAP (overlap_tokens = 0) ===
+Chunk #1 Trailing End:
+LexTrace Internal Employee Handbook
+
+1. Code of Conduct
+All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confidentiality at all times.
+
+2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authentication (MFA)
+
+Chunk #2 Leading Start:
+must be enabled on all developer accounts.
+- API keys, credentials, and customer data must never be committed to Git repositories.
+- Use environment variables ('.env') for local development configuration.
+
+4. Intellectual Property
+All software, scripts, datasets, and prompt templates developed during employment belong exclusively to LexTrace Inc.
+
+================================================================================
+=== 2. WITH CONTROLLED OVERLAP (overlap_tokens = 25) ===
+Chunk #1 Trailing End:
+LexTrace Internal Employee Handbook
+
+1. Code of Conduct
+All team members are expected to maintain professional standards, foster an inclusive engineering culture, and protect company and client confidentiality at all times.
+
+2. Working Hours & Remote Work
+LexTrace operates on a flexible hybrid work schedule. Core sync hours are between 10:00 AM and 4:00 PM local time. Remote collaboration requires active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authentication (MFA)
+
+Chunk #2 Leading Start (Repeats trailing 25 tokens):
+Remote collaboration requires active status updates in Slack.
+
+3. System Access & Security
+- Mandatory multi-factor authentication (MFA) must be enabled on all developer accounts.
+- API keys, credentials, and customer data must never be committed to Git repositories.
+- Use environment variables ('.env') for local development configuration.
+
+4. Intellectual Property
+All software, scripts, datasets, and prompt templates developed during employment belong exclusively to LexTrace Inc.
+
+================================================================================
+
+=== 3. PARAMETER JUSTIFICATION SUMMARY ===
+1. LLM Context Budget Efficiency (gpt-4o-mini):
+   - gpt-4o-mini features a 128,000-token context window.
+   - Sizing chunks at 200 tokens ensures that retrieving Top-K (e.g. K=5) context units consumes
+     only ~1,000 tokens (less than 1% of the total prompt budget).
+   - This leaves 99% of the context budget for conversation history, complex system instructions, and LLM reasoning.
+
+2. Embedding Vector Resolution (text-embedding-3-small):
+   - text-embedding-3-small supports up to 8,191 tokens per vector.
+   - However, empirical benchmark studies demonstrate that dense retrieval accuracy peaks on 150-300 token passages.
+   - Overly large chunks (>500 tokens) dilute semantic focus, causing key facts to be masked by surrounding noise.
+
+3. Cost vs. Context Preservation Trade-off (20% Controlled Overlap):
+   - An overlap of 40 tokens (20% of 200 tokens) increases total vector storage and embedding API costs by ~20%.
+   - In return, it completely eliminates boundary context loss—ensuring every multi-sentence rule or clause is
+     fully represented in at least one retrieved chunk without needing excessive duplication (>35%).

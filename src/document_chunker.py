@@ -276,6 +276,107 @@ class DocumentChunker:
             return int(page_matches[-1])
         return 1
 
+    def chunk_token_aware(
+        self,
+        text: str,
+        max_tokens: int = 200,
+        overlap_tokens: int = 40,
+        source_id: str = "doc",
+        file_type: str = "txt",
+        section: Optional[str] = None,
+        page_number: Optional[int] = None
+    ) -> List[DocumentChunk]:
+        """
+        Strategy C: Token-Aware Chunking with Controlled Token Overlap (Task 1 & Task 2).
+        Sizes chunks strictly by BPE token count using tiktoken and guarantees exact token bounds.
+
+        Args:
+            text: Normalized document text content.
+            max_tokens: Maximum allowed tokens per chunk (Task 1).
+            overlap_tokens: Token count overlap repeated between adjacent chunks (Task 2).
+            source_id: Origin document identifier for citation tracing.
+            file_type: Extension format tag.
+            section: Explicit section override or None to extract dynamically.
+            page_number: Explicit page override or None to extract dynamically.
+
+        Returns:
+            List of DocumentChunk objects with strategy="token_aware".
+        """
+        if not text:
+            return []
+
+        # 1. Tokenize document text using tiktoken BPE tokenizer
+        if self.tokenizer:
+            token_ids = self.tokenizer.encode(text)
+        else:
+            # Fallback estimation if tiktoken unavailable: split into ~4-char pseudo token units
+            tokens = [text[i:i+4] for i in range(0, len(text), 4)]
+            token_ids = list(range(len(tokens)))
+
+        if not token_ids:
+            return []
+
+        # Enforce valid overlap bound
+        safe_overlap = min(max(0, overlap_tokens), max_tokens - 1)
+        step = max(1, max_tokens - safe_overlap)
+
+        chunks: List[DocumentChunk] = []
+        chunk_idx = 0
+        i = 0
+        search_cursor = 0
+        tokens_len = len(token_ids)
+
+        while i < tokens_len:
+            end_i = min(i + max_tokens, tokens_len)
+            
+            if self.tokenizer:
+                chunk_token_slice = token_ids[i:end_i]
+                chunk_text = self.tokenizer.decode(chunk_token_slice).strip()
+                exact_tokens = len(chunk_token_slice)
+            else:
+                chunk_text = text[i * 4:end_i * 4].strip()
+                exact_tokens = end_i - i
+
+            if chunk_text:
+                # Find character offsets in parent document
+                lookup_sample = chunk_text[:min(35, len(chunk_text))].strip()
+                start_offset = text.find(lookup_sample, search_cursor) if lookup_sample else search_cursor
+                if start_offset == -1:
+                    start_offset = search_cursor
+                end_offset = start_offset + len(chunk_text)
+                search_cursor = max(search_cursor, start_offset + 1)
+
+                chunk_id = f"{source_id}#chunk-{chunk_idx + 1:03d}"
+                active_sec = section if section is not None else self.extract_section_header(text, start_offset, file_type)
+                active_page = page_number if page_number is not None else self.extract_page_number(text, start_offset)
+
+                meta = ChunkMetadata(
+                    source_id=source_id,
+                    section=active_sec,
+                    page_number=active_page,
+                    chunk_index=chunk_idx,
+                    start_char=start_offset,
+                    end_char=end_offset,
+                    file_type=file_type,
+                    char_count=len(chunk_text),
+                    token_count=exact_tokens,
+                    strategy="token_aware"
+                )
+
+                c = DocumentChunk(
+                    chunk_id=chunk_id,
+                    text=chunk_text,
+                    metadata=meta
+                )
+                chunks.append(c)
+                chunk_idx += 1
+
+            if end_i == tokens_len:
+                break
+            i += step
+
+        return chunks
+
     def chunk_fixed_window(
         self,
         text: str,

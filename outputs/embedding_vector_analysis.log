@@ -1,0 +1,23 @@
+================================================================================
+    LEXTRACE EMBEDDING VECTOR & SEMANTIC SIMILARITY EVIDENCE LOG    
+================================================================================
+
+EMBEDDING MODEL : text-embedding-3-small
+VECTOR DIMENSION: 1536 dims
+UNIFORM SHAPE   : UNIFORM_DIMENSIONS
+
+=== SAMPLE TEXTS ===
+Text A: All team members are required to enable multi-factor authentication (MFA) to secure developer accounts.
+Text B: Mandatory multi-factor authentication (MFA) must be configured on all staff login accounts.
+Text C: The employee cafeteria serves hot pasta, green salad, and fresh soup every Tuesday.
+
+=== COSINE SIMILARITY RESULTS ===
+Similar Pair (Text A vs Text B)   : 0.8961
+Dissimilar Pair (Text A vs Text C): -0.0016
+Dissimilar Pair (Text B vs Text C): 0.0002
+Evaluation Proof: Similar > Dissimilar -> PASSED
+
+=== CONCEPTUAL EXPLANATION NOTE ===
+Embedding vectors are continuous numerical representations of text meaning in high-dimensional vector space (e.g. 1536 dimensions for text-embedding-3-small). They are NOT random database IDs, nor are they simple sparse keyword frequency counts (like BM25 or TF-IDF).
+
+Each floating-point number in an embedding vector captures a abstract semantic feature or concept (such as sentiment, topic, formality, or domain context). Because similar concepts are mapped to nearby coordinates in vector space, calculating the cosine distance between vectors allows RAG systems to retrieve relevant context based on conceptual meaning—even when the query and document use completely different vocabulary or synonyms.

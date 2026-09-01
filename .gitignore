@@ -57,6 +57,8 @@ outputs/*
 !outputs/token_boundary_comparison.log
 !outputs/full_corpus_ingestion_summary.json
 !outputs/full_corpus_ingestion.log
+!outputs/embedding_demonstration_results.json
+!outputs/embedding_vector_analysis.log
 
 
 

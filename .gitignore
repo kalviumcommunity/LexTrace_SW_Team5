@@ -55,6 +55,8 @@ outputs/*
 !outputs/traceback_demonstration.log
 !outputs/token_chunking_results.json
 !outputs/token_boundary_comparison.log
+!outputs/full_corpus_ingestion_summary.json
+!outputs/full_corpus_ingestion.log
 
 
 

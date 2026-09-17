@@ -59,6 +59,7 @@ outputs/*
 !outputs/full_corpus_ingestion.log
 !outputs/embedding_demonstration_results.json
 !outputs/embedding_vector_analysis.log
+!outputs/embedded_corpus_vectors.json
 
 
 

@@ -13,7 +13,14 @@ def main():
     print("      LexTrace RAG Assistant — Text Embedding Vector & Similarity Demonstration      ")
     print("=" * 85)
 
-    # 1. Define Sample Test Texts (Task 1)
+    # 1. Verify Environment Configuration (Task 3)
+    print("\n[Task 3] Environment Configuration Audit:")
+    print("-" * 85)
+    print(f"  EMBEDDING_MODEL : {Config.EMBEDDING_MODEL}")
+    print(f"  OPENAI_API_BASE : {Config.OPENAI_API_BASE}")
+    print(f"  OPENAI_API_KEY  : {'[CONFIGURED]' if Config.OPENAI_API_KEY else '[MISSING / MOCK FALLBACK]'}")
+
+    # 2. Define Sample Test Texts (Task 1)
     text_a = "All team members are required to enable multi-factor authentication (MFA) to secure developer accounts."
     text_b = "Mandatory multi-factor authentication (MFA) must be configured on all staff login accounts."
     text_c = "The employee cafeteria serves hot pasta, green salad, and fresh soup every Tuesday."
@@ -30,9 +37,9 @@ def main():
         print(f"  - [{item['id']}] Category: {item['category']}")
         print(f"    Text: \"{item['text']}\"")
 
-    # 2. Generate Embeddings (Task 1)
-    generator = EmbeddingGenerator(model_name="text-embedding-3-small")
-    print(f"\n[Step 2] Generating embedding vectors using model '{generator.model}'...")
+    # 3. Generate Embeddings for Benchmark Texts (Task 1 & Task 4)
+    generator = EmbeddingGenerator()
+    print(f"\n[Step 2] Generating embedding vectors using model '{generator.model}' via API...")
     
     vec_a = generator.generate_embedding(text_a)
     vec_b = generator.generate_embedding(text_b)
@@ -40,23 +47,23 @@ def main():
 
     all_vectors = [vec_a, vec_b, vec_c]
 
-    # 3. Report Vector Dimension & Verify Consistency (Task 2)
+    # 4. Report Vector Dimension & Verify Consistency (Task 1 & Task 4)
     print("\n" + "=" * 85)
-    print("[Task 2] Vector Shape & Dimensionality Audit:")
+    print("[Task 1 & 4] Vector Shape & Dimensionality Audit:")
     print("=" * 85)
     audit = generator.verify_dimensionality(all_vectors)
 
-    print(f"Total Vectors Generated : {audit['total_vectors']}")
-    print(f"Vector Dimension Length  : {audit['vector_dimension']} components per vector")
-    print(f"Dimensionality Status   : [{audit['status']}] (100% of texts produced identical length vectors)")
+    print(f"Total Benchmark Vectors Generated : {audit['total_vectors']}")
+    print(f"Vector Dimension Length           : {audit['vector_dimension']} components per vector")
+    print(f"Dimensionality Status            : [{audit['status']}] (100% of texts produced identical length vectors)")
     print("-" * 85)
-    print(f"Text A Vector Length: {len(vec_a)} | Slice (first 5 components): {[round(x, 4) for x in vec_a[:5]]}")
-    print(f"Text B Vector Length: {len(vec_b)} | Slice (first 5 components): {[round(x, 4) for x in vec_b[:5]]}")
-    print(f"Text C Vector Length: {len(vec_c)} | Slice (first 5 components): {[round(x, 4) for x in vec_c[:5]]}")
+    print(f"Text A Vector Length: {len(vec_a)} | Trimmed Sample (first 5 components): {[round(x, 4) for x in vec_a[:5]]}")
+    print(f"Text B Vector Length: {len(vec_b)} | Trimmed Sample (first 5 components): {[round(x, 4) for x in vec_b[:5]]}")
+    print(f"Text C Vector Length: {len(vec_c)} | Trimmed Sample (first 5 components): {[round(x, 4) for x in vec_c[:5]]}")
 
-    # 4. Compare Similar vs Dissimilar Texts via Cosine Similarity (Task 3)
+    # 5. Cosine Similarity Evaluation
     print("\n" + "=" * 85)
-    print("[Task 3] Cosine Similarity Evaluation (Similar vs Dissimilar Pairs):")
+    print("Cosine Similarity Evaluation (Similar vs Dissimilar Pairs):")
     print("=" * 85)
 
     sim_a_b = generator.compute_cosine_similarity(vec_a, vec_b)
@@ -77,30 +84,76 @@ def main():
     print(f"Semantic Evaluation Proof : [{'PASSED' if higher_score_proof else 'FAILED'}]")
     print(f"  -> Similar Pair (A vs B) scored {sim_a_b:.4f}, which is SIGNIFICANTLY HIGHER than Dissimilar Pair (A vs C: {sim_a_c:.4f}).")
 
-    # 5. Theoretical Explanation Note (Task 4)
+    # 6. Embed Prepared Corpus Chunks & Store Vectors with Metadata (Task 2, Task 4, Task 5)
     print("\n" + "=" * 85)
-    print("[Task 4] What Embedding Vectors Represent in RAG Systems:")
+    print("[Task 2, 4, 5] Embedding Prepared Corpus Chunks & Storing Vectors with Metadata:")
+    print("=" * 85)
+
+    sample_chunks_file = Config.OUTPUTS_DIR / "sample_chunks_with_metadata.json"
+    corpus_chunks = []
+    if sample_chunks_file.exists():
+        with open(sample_chunks_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            corpus_chunks = data.get("sample_chunks", [])
+            print(f"Loaded {len(corpus_chunks)} prepared text chunks from '{sample_chunks_file.name}'")
+    else:
+        from src.full_corpus_pipeline import FullCorpusPipeline
+        pipeline = FullCorpusPipeline()
+        summary = pipeline.run_pipeline(Config.DATA_DIR / "sample_corpus")
+        corpus_chunks = summary.get("sample_chunks_inspection", [])
+
+    embedded_corpus_data = generator.embed_corpus(corpus_chunks)
+    embedded_vectors_path = Config.OUTPUTS_DIR / "embedded_corpus_vectors.json"
+
+    with open(embedded_vectors_path, "w", encoding="utf-8") as f:
+        json.dump(embedded_corpus_data, f, indent=2)
+
+    print(f"Total Chunks Embedded   : {embedded_corpus_data['corpus_summary']['total_chunks_embedded']}")
+    print(f"Vector Length           : {embedded_corpus_data['corpus_summary']['vector_dimension']}")
+    print(f"Environment Config Used : Model='{embedded_corpus_data['corpus_summary']['embedding_model']}', BaseURL='{embedded_corpus_data['corpus_summary']['api_base_url']}'")
+    print(f"Stored Vectors File     : outputs/embedded_corpus_vectors.json")
+    print("-" * 85)
+    print("Sample Stored Vector Entry Verification:")
+    if embedded_corpus_data["embedded_chunks"]:
+        sample_entry = embedded_corpus_data["embedded_chunks"][0]
+        print(f"  - Chunk ID      : {sample_entry['chunk_id']}")
+        print(f"  - Source Doc    : {sample_entry['source_id']}")
+        print(f"  - Section       : {sample_entry['section']}")
+        print(f"  - Chunk Index   : {sample_entry['chunk_index']}")
+        print(f"  - Page Number   : {sample_entry['page_number']}")
+        print(f"  - Source Text   : \"{sample_entry['source_text'][:90]}...\"")
+        print(f"  - Vector Length : {sample_entry['vector_length']}")
+        print(f"  - Trimmed Vector: {sample_entry['trimmed_vector']}")
+
+    # 7. Theoretical Explanation Note
+    print("\n" + "=" * 85)
+    print("What Embedding Vectors Represent in RAG Systems:")
     print("=" * 85)
     explanation_note = (
         "Embedding vectors are continuous numerical representations of text meaning in high-dimensional vector space "
         "(e.g. 1536 dimensions for text-embedding-3-small). They are NOT random database IDs, nor are they simple sparse "
         "keyword frequency counts (like BM25 or TF-IDF).\n\n"
-        "Each floating-point number in an embedding vector captures a abstract semantic feature or concept "
+        "Each floating-point number in an embedding vector captures an abstract semantic feature or concept "
         "(such as sentiment, topic, formality, or domain context). Because similar concepts are mapped to nearby coordinates "
         "in vector space, calculating the cosine distance between vectors allows RAG systems to retrieve relevant context "
         "based on conceptual meaning—even when the query and document use completely different vocabulary or synonyms."
     )
     print(explanation_note)
 
-    # 6. Export Results Artifacts (Task 5)
+    # 8. Export Benchmark Results Artifacts (Task 5)
     print("\n" + "=" * 85)
-    print("[Task 5] Exporting Embedding Artifacts for Commit:")
+    print("[Task 5] Exporting Demonstration Artifacts:")
     print("=" * 85)
 
     json_output_path = Config.OUTPUTS_DIR / "embedding_demonstration_results.json"
     log_output_path = Config.OUTPUTS_DIR / "embedding_vector_analysis.log"
 
     export_payload = {
+        "environment_config": {
+            "embedding_model": generator.model,
+            "api_base_url": generator.base_url,
+            "api_key_configured": bool(generator.api_key)
+        },
         "model_info": {
             "embedding_model": generator.model,
             "vector_dimension": audit['vector_dimension'],
@@ -118,6 +171,7 @@ def main():
             "dissimilar_pair_B_C": {"description": "Text B vs Text C (Security vs Cafeteria)", "cosine_similarity": round(sim_b_c, 4)},
             "similar_pair_scores_higher": higher_score_proof
         },
+        "corpus_embedding_summary": embedded_corpus_data["corpus_summary"],
         "explanation_note": explanation_note
     }
 
@@ -129,9 +183,10 @@ def main():
         "    LEXTRACE EMBEDDING VECTOR & SEMANTIC SIMILARITY EVIDENCE LOG    ",
         "=" * 80,
         f"\nEMBEDDING MODEL : {generator.model}",
+        f"API BASE URL    : {generator.base_url}",
         f"VECTOR DIMENSION: {audit['vector_dimension']} dims",
         f"UNIFORM SHAPE   : {audit['status']}\n",
-        "=== SAMPLE TEXTS ===",
+        "=== SAMPLE BENCHMARK TEXTS ===",
         f"Text A: {text_a}",
         f"Text B: {text_b}",
         f"Text C: {text_c}\n",
@@ -140,6 +195,10 @@ def main():
         f"Dissimilar Pair (Text A vs Text C): {sim_a_c:.4f}",
         f"Dissimilar Pair (Text B vs Text C): {sim_b_c:.4f}",
         f"Evaluation Proof: Similar > Dissimilar -> {'PASSED' if higher_score_proof else 'FAILED'}\n",
+        "=== PREPARED CORPUS EMBEDDING SUMMARY ===",
+        f"Total Chunks Embedded: {embedded_corpus_data['corpus_summary']['total_chunks_embedded']}",
+        f"Vector Dimension     : {embedded_corpus_data['corpus_summary']['vector_dimension']} dims",
+        f"Stored Output File   : outputs/embedded_corpus_vectors.json\n",
         "=== CONCEPTUAL EXPLANATION NOTE ===",
         explanation_note
     ]
@@ -147,11 +206,12 @@ def main():
     with open(log_output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(log_lines))
 
-    print(f"  [1/2] JSON demonstration output saved to: outputs/embedding_demonstration_results.json")
-    print(f"  [2/2] Analysis log saved to              : outputs/embedding_vector_analysis.log")
+    print(f"  [1/3] Embedded corpus vectors saved to  : outputs/embedded_corpus_vectors.json")
+    print(f"  [2/3] JSON demonstration summary saved to: outputs/embedding_demonstration_results.json")
+    print(f"  [3/3] Analysis log saved to              : outputs/embedding_vector_analysis.log")
 
     print("\n" + "=" * 85)
-    print(" SUCCESS: Text embedding demonstration & semantic similarity executed cleanly!")
+    print(" SUCCESS: Text embedding generation, corpus vector storage & verification completed!")
     print("=" * 85)
 
 if __name__ == "__main__":

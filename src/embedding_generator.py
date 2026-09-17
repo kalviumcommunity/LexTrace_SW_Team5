@@ -84,6 +84,71 @@ class EmbeddingGenerator:
         """Generate embedding vectors for a list of text strings."""
         return [self.generate_embedding(t) for t in texts]
 
+    def embed_chunk(self, chunk: Any) -> Dict[str, Any]:
+        """
+        Embed a single document chunk (DocumentChunk object or dict) and package it 
+        with source text, metadata, vector length, trimmed sample vector, and full embedding.
+        """
+        if hasattr(chunk, "text") and hasattr(chunk, "metadata"):
+            text = chunk.text
+            metadata = chunk.metadata.to_dict() if hasattr(chunk.metadata, "to_dict") else dict(chunk.metadata)
+            chunk_id = chunk.chunk_id
+            source_id = chunk.metadata.source_id
+            chunk_index = chunk.metadata.chunk_index
+            section = chunk.metadata.section
+            page_number = chunk.metadata.page_number
+            file_type = chunk.metadata.file_type
+        else:
+            text = chunk.get("text") or chunk.get("snippet") or ""
+            metadata = chunk.get("metadata", {})
+            chunk_id = chunk.get("chunk_id", "unknown_chunk")
+            source_id = chunk.get("source_id", metadata.get("source_id", "unknown"))
+            chunk_index = chunk.get("chunk_index", metadata.get("chunk_index", 0))
+            section = metadata.get("section")
+            page_number = metadata.get("page_number", 1)
+            file_type = metadata.get("file_type", "txt")
+
+        vector = self.generate_embedding(text)
+        trimmed_vec = [round(x, 6) for x in vector[:5]]
+
+        return {
+            "chunk_id": chunk_id,
+            "source_id": source_id,
+            "chunk_index": chunk_index,
+            "section": section,
+            "page_number": page_number,
+            "file_type": file_type,
+            "source_text": text,
+            "metadata": metadata,
+            "vector_length": len(vector),
+            "trimmed_vector": trimmed_vec,
+            "embedding": vector
+        }
+
+    def embed_corpus(self, chunks: List[Any]) -> Dict[str, Any]:
+        """
+        Embed a collection of document chunks and package into a stored vector corpus dictionary.
+        """
+        embedded_records = [self.embed_chunk(c) for c in chunks]
+        vectors = [r["embedding"] for r in embedded_records]
+        audit = self.verify_dimensionality(vectors)
+
+        return {
+            "corpus_summary": {
+                "total_chunks_embedded": len(embedded_records),
+                "embedding_model": self.model,
+                "vector_dimension": audit["vector_dimension"],
+                "dimension_uniformity": audit["valid"],
+                "api_base_url": self.base_url,
+                "environment_config_used": {
+                    "EMBEDDING_MODEL": Config.EMBEDDING_MODEL,
+                    "OPENAI_API_BASE": Config.OPENAI_API_BASE,
+                    "OPENAI_API_KEY_CONFIGURED": bool(Config.OPENAI_API_KEY)
+                }
+            },
+            "embedded_chunks": embedded_records
+        }
+
     def _generate_pseudo_embedding(self, text: str, dimension: int = DEFAULT_DIMENSION) -> List[float]:
         """
         Generate a deterministic L2-normalized 1536-dimensional float vector based on word semantics & hash seeds.
